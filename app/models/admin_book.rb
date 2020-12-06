@@ -1,0 +1,2 @@
+class AdminBook < ApplicationRecord
+end
