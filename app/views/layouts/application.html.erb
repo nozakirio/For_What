@@ -4,7 +4,7 @@
     <title>ForWhat</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/dddcd61cbd.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,6 +12,8 @@
   <body>
     <%= link_to 'ログイン', new_user_session_path %>
     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>

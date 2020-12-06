@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_customer!
+  
   def show
   end
 
@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def unsubscribe
+    @user = User.find(params[:id])
   end
   
   def withdraw

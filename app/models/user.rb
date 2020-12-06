@@ -3,4 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   enum gender: { 男性: 0, 女性: 1}
+  
+  validates :name,:birthday,:gender, presence: true
+  
 end
