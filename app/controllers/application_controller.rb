@@ -3,16 +3,10 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(
-      :sign_up, keys: [:name, :birthday, :gender, :email]
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :birthday, :gender, :email]
       )
-    devise_parameter_sanitizer.permit(
-      :update, keys: [:name, :birthday, :gender, :email, :profile_image]
-      )
+    devise_parameter_sanitizer.permit(:update, keys: [:name, :birthday, :gender, :email, :profile_image])
   end
-  
-  # 性別区分　0男性,1女性
-  GENDER = ["男性",""]
   
   private
     def after_sign_up_path_for(resource)
