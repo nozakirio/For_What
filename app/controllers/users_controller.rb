@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def show
   end
 
@@ -9,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def unsubscribe
+    @user = User.find(params[:id])
   end
   
   def withdraw
