@@ -73,3 +73,7 @@ gem 'rakuten_web_service'
 gem 'acts-as-taggable-on'
 gem 'rubocop-airbnb'
 gem 'dotenv-rails'
+
+group :production do
+  gem 'mysql2'
+end
