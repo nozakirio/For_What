@@ -1,2 +1,5 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>本を探す</h1>
+  <%= form_with model: @book,url: search_books_path, method: :get, local: true do |f| %>
+    <%= text_field :keyword, "" %>
+    <%= f.submit "検索" %>
+  <% end %>

@@ -1,2 +1,26 @@
-<h1>Books#search</h1>
-<p>Find me in app/views/books/search.html.erb</p>
+<h1>検索結果</h1>
+<% if @books.present? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>タイトル</th>
+        <th>著者名</th>
+        <th>出版社</th>
+        <th>読んだ人</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+      <tr>
+        <td><%= image_tag(book.small_image_url) %></td>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= book.publisher_name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+<% end %>
