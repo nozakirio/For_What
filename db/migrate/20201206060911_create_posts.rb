@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.integer :user_id, null: false
       t.integer :book_id, null: false
       t.string :reason, null: false
-      t.integer :starrails g controller PostImagess
+      t.integer :star
       t.text :comment
       t.timestamps
     end
