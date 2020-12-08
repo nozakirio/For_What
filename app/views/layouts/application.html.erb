@@ -11,7 +11,10 @@
 
   <body>
     <%= link_to 'ログイン', new_user_session_path %>
-    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <% if user_signed_in? %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <%= link_to 'マイページ', user_path(current_user) %>
+    <% end %>
     <div class="container">
     <%= yield %>
     </div>
