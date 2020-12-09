@@ -1,2 +1,6 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>本を探す</h1>
+  <%= form_with model: @book,url: search_books_path, method: :get, local: true do |f| %>
+    <%= f.select :model, options_for_select({ "タイトル" => "title", "著者" => "author" }) %>
+    <%= text_field :keyword, "", placeholder:'書籍タイトル、著者', size: 40 %>
+    <%= f.submit "検索" %>
+  <% end %>
