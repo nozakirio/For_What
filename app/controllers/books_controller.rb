@@ -14,10 +14,10 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     book_entry = Book.find_by(isbn: @book.isbn)
     if book_entry.present?
-      redirect_to new_post_path(@book)
+      redirect_to new_post_path(book: book_entry)
     else
       @book.save
-      redirect_to new_post_path(@book)
+      redirect_to new_post_path(book: @book)
     end
   end
 
