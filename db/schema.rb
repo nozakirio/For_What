@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_065957) do
+ActiveRecord::Schema.define(version: 2020_12_10_065057) do
 
   create_table "admin_books", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_065957) do
     t.string "title", null: false
     t.string "author", null: false
     t.string "isbn", null: false
-    t.date "publication_date", null: false
+    t.string "publication_date", null: false
     t.string "book_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

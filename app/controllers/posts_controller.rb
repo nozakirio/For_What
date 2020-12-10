@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def new
-  end
+    
   
   def update
   end
