@@ -19,7 +19,16 @@
         <td><%= result.author %></td>
         <td><%= result.publisher_name %></td>
         <td>xx人</td>
-        <td><%= link_to "読みたい本に登録",new_post_path %></td>
+        <td>
+          <%= form_with model: @book, url: books_path, local: true do |f| %>
+            <%= f.hidden_field :title, :value => result.title %>
+            <%= f.hidden_field :author, :value => result.author %>
+            <%= f.hidden_field :isbn, :value => result.isbn %>
+            <%= f.hidden_field :publication_date, :value => result.sales_date %>
+            <%= f.hidden_field :book_image_id, :value => result.small_image_url %>
+            <%= f.submit "読みたい本に登録" %>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
