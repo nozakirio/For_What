@@ -2,42 +2,31 @@ class BooksController < ApplicationController
   def search
     @keyword = params[:keyword]
     @model = params[:model]
-    @books = []
-
     if params[:keyword] && @model == "title"
       @results = RakutenWebService::Books::Book.search(title: @keyword)
     else params[:keyword] && @model == "author"
       @results = RakutenWebService::Books::Book.search(author: @keyword)
     end
-
-    # @results.each do |result|
-    #   book = Book.new(read(result))
-    #   @books << book
-    # end
-
+    @book = Book.new
   end
 
   def create
+    @book = Book.new(book_params)
+    book_entry = Book.find_by(isbn: @book.isbn)
+    if book_entry.present?
+      redirect_to new_post_path(book: book_entry)
+    else
+      @book.save
+      redirect_to new_post_path(book: @book)
+    end
   end
 
   def show
   end
 
 private
-
-  # def read(result)
-  #   title = result['title']
-  #   author = result['author']
-  #   isbn = result['isbn']
-  #   publication_date = result['sales_date']
-  #   book_image_id = result['mediumImageUrl'].gsub('?_ex=120x120', '')
-  #   {
-  #     title: title,
-  #     author: author,
-  #     isbn: isbn,
-  #     publication_date: publication_date,
-  #     book_image_id: book_image_id
-  #   }
-  # end
+  def book_params
+    params.require(:book).permit(:title, :author, :isbn, :publication_date, :book_image_id)
+  end
 
 end
