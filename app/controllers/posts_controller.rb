@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   def index
+    @book = Book.find_by(isbn: params[:isbn])
+    @posts = Post.where(book_id: @book.id)
   end
   
   def create
@@ -18,6 +20,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
   
   def destroy

@@ -1,2 +1,13 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<p><%= @post.book.title %></p>
+<p><%= @post.book.author %></p>
+<p><%= image_tag(@post.book.book_image_id) %></p>
+<p><%= @post.book.publication_date %></p>
+
+<h1>読みたい本詳細</h1>
+<h1>目的・背景</h1>
+<p><%= @post.reason %></p>
+<% if @post.user == current_user %>
+  <%= link_to "読んだ本に登録", edit_post_path(@post) %>
+<% else %>
+	<%= link_to "読みたい本から削除", post_path(@book), method: :delete %>
+<% end %>
