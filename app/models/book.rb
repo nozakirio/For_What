@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
   has_many :admin_books
-  has_many :pos
+  has_many :users, through: :admin_books
+  has_many :posts
 end
