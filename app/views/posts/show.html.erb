@@ -3,11 +3,22 @@
 <p><%= image_tag(@post.book.book_image_id) %></p>
 <p><%= @post.book.publication_date %></p>
 
-<h1>読みたい本詳細</h1>
-<h1>目的・背景</h1>
-<p><%= @post.reason %></p>
-<% if @post.user == current_user %>
-  <%= link_to "読んだ本に登録", edit_post_path(@post) %>
+<% if @post.star == nil %>
+  <h1>読みたい本詳細</h1>
+  <h1>目的・背景</h1>
+  <p><%= @post.reason %></p>
 <% else %>
-	<%= link_to "読みたい本から削除", post_path(@book), method: :delete %>
+  <h1>読んだ本詳細</h1>
+  <h1>目的・背景</h1>
+  <p><%= @post.reason %></p>
+  <p>評価<%= @post.star %></p>
+  <p>コメント<%= @post.comment %></p>
+<% end %>
+
+<% if @post.user == current_user && @post.star != nil %>
+  <%= link_to "読みたい本から削除", post_path(@post), method: :delete %>
+<% elsif @post.user == current_user && @post.star == nil %>
+  <%= link_to "読んだ本に登録", edit_post_path(@post) %>
+<% else @post.user != current_user %>
+  <%= link_to "読みたい本に登録", new_post_path(@post.book) %>
 <% end %>

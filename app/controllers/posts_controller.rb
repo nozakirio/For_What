@@ -19,9 +19,15 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+    @book = @post.book
   end
 
   def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    @post.admin_books.update(have_read: true)
+    redirect_to post_path(@post)
   end
 
   def show

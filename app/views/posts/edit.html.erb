@@ -3,9 +3,9 @@
 <p><%= image_tag(@book.book_image_id) %></p>
 <p><%= @book.publication_date %></p>
 
-<h1>読みたい本を登録</h1>
-  <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
-    <%= f.text_field :reason %>
-    <%= f.hidden_field :book_id, :value => @book.id %>
-    <%= f.submit "読みたい本に登録" %>
+<h1>読んだ本に登録する</h1>
+  <%= form_with model: @post, url: post_path, method: :patch, local: true do |f| %>
+    <%= f.number_field :star %>
+    <%= f.text_field :comment %>
+    <%= f.submit "内容を保存" %>
   <% end %>
