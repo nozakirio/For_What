@@ -6,4 +6,7 @@ class User < ApplicationRecord
   
   validates :name,:birthday,:gender, presence: true
   
+  has_many :admin_books
+  has_many :books, through: :admin_books
+  
 end

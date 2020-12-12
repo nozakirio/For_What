@@ -18,7 +18,7 @@
         <td><%= link_to result.title,result.item_url %></td>
         <td><%= result.author %></td>
         <td><%= result.publisher_name %></td>
-        <td><%= link_to  "xx人",posts_path(isbn: result.isbn) %></td>
+        <td><%= link_to "xx人", posts_path(isbn: result.isbn) %></td>
         <td>
           <%= form_with model: @book, url: books_path, local: true do |f| %>
             <%= f.hidden_field :title, :value => result.title %>
