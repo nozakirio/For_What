@@ -42,6 +42,7 @@
         <td><%= have_read.updated_at.strftime('%Y/%m/%d') %></td>
         <td><%= have_read.book.title %></td>
         <td><%= have_read.book.author %></td>
+        <td id="star-small" data-score="<%= have_read.post.star %>"></td>
         <td><%= link_to "投稿詳細", post_path(have_read.post) %></td>
       </tr>
     <% end %>

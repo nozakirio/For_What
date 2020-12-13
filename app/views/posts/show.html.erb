@@ -11,7 +11,7 @@
   <h1>読んだ本詳細</h1>
   <h1>目的・背景</h1>
   <p><%= @post.reason %></p>
-  <p>評価<%= @post.star %></p>
+  <div id="star" data-score="<%= @post.star %>"></div>
   <p>コメント<%= @post.comment %></p>
 <% end %>
 
