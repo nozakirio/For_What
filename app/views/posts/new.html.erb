@@ -5,7 +5,13 @@
 <p><%= @book.publication_date %></p>
 
 <h1>読みたい本を登録</h1>
+<h3>読もうと思った目的や背景を教えてください</h3>
   <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+  <h4>小説なら</h4>
+  <p>好きな作家だから、新しい作家にチャレンジ、好きなジャンルだから、など</p>
+  <h4>ビジネス書・新書・専門書なら</h4>
+  <p></p>
+    
     <%= f.text_field :reason %>
     <%= f.hidden_field :book_id, :value => @book.id %>
     <%= f.submit "読みたい本に登録" %>

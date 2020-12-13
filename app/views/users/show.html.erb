@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= @want_reads.each do |want_read| %>
+    <% @want_reads.each do |want_read| %>
       <tr>
         <td><%= want_read.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= want_read.book.title %></td>
@@ -30,14 +30,14 @@
 <table class="table">
   <thead>
     <tr>
-      <th>登録日</th>
+      <th>読了日</th>
       <th>タイトル</th>
       <th>著者名</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <%= @have_reads.each do |have_read| %>
+    <% @have_reads.each do |have_read| %>
       <tr>
         <td><%= have_read.updated_at.strftime('%Y/%m/%d') %></td>
         <td><%= have_read.book.title %></td>
