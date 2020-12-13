@@ -13,13 +13,13 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      @admin_book = @post.admin_books.build(user_id: current_user.id, book_id: @post.book_id, want_read: true)
-      @admin_book.save
+      admin_book = @post.admin_books.build(user_id: current_user.id, book_id: @post.book_id, want_read: true)
+      admin_book.save
       redirect_to post_path(@post)
     else
       @book = @post.book
       @post = Post.new
-      flash[:notice] = '目的や背景を入力してください' 
+      flash[:notice] = '目的や背景を入力してください'
       render 'new'
     end
   end
@@ -36,7 +36,7 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       @book = @post.book
-      flash[:notice] = '評価とコメントを入力してください' 
+      flash[:notice] = '評価とコメントを入力してください'
       render 'edit'
     end
   end
@@ -46,6 +46,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    post = Post.find(params[:id])
+    if post.destroy
+    post.admin_books.destroy_all
+    redirect_to user_path(current_user)
+    end
   end
 
   private
