@@ -4,8 +4,23 @@
 <p><%= @book.publication_date %></p>
 
 <h1>読んだ本に登録する</h1>
-  <%= form_with model: @post, url: post_path, method: :patch, local: true do |f| %>
-    <%= f.number_field :star %>
+<p id="notice"><%= notice %></p>
+  <%= form_with model: @post, url: post_path,  method: :patch, local: true do |f| %>
+    <div data-turbolinks="false">
+    <div id="rating-form">
+      <%= f.label :star %>
+    </div>
+    </div>
     <%= f.text_field :comment %>
     <%= f.submit "内容を保存" %>
   <% end %>
+  
+<script>
+  $(function () {
+    $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'post[star]'
+    });
+  });
+</script>
+  

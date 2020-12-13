@@ -20,6 +20,16 @@
   color: white;
 }
 
+.table_line {
+	display: table;
+	width: 1000px;
+}
+	
+.box {
+	display: table-cell;
+	border: solid 1px #999;
+	width: 200px;
+}
 
 @import "bootstrap-sprockets";
 @import "bootstrap";

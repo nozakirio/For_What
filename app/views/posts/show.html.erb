@@ -11,14 +11,17 @@
   <h1>読んだ本詳細</h1>
   <h1>目的・背景</h1>
   <p><%= @post.reason %></p>
-  <p>評価<%= @post.star %></p>
+  <div data-turbolinks="false">
+  <div id="star" data-score="<%= @post.star %>"></div>
+  </div>
   <p>コメント<%= @post.comment %></p>
 <% end %>
 
 <% if @post.user == current_user && @post.star != nil %>
-  <%= link_to "読みたい本から削除", post_path(@post), method: :delete %>
+  <%= link_to "読んだ本から削除", post_path(@post), method: :delete %>
 <% elsif @post.user == current_user && @post.star == nil %>
   <%= link_to "読んだ本に登録", edit_post_path(@post) %>
+  <%= link_to "読みたい本から削除", post_path(@post), method: :delete %>
 <% else @post.user != current_user %>
   <%= link_to "読みたい本に登録", new_post_path(@post.book) %>
 <% end %>

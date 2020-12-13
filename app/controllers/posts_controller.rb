@@ -12,10 +12,16 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    @admin_book = @post.admin_books.build(user_id: current_user.id, book_id: @post.book_id, want_read: true)
-    @admin_book.save
-    redirect_to post_path(@post)
+    if @post.save
+      admin_book = @post.admin_books.build(user_id: current_user.id, book_id: @post.book_id, want_read: true)
+      admin_book.save
+      redirect_to post_path(@post)
+    else
+      @book = @post.book
+      @post = Post.new
+      flash[:notice] = '目的や背景を入力してください'
+      render 'new'
+    end
   end
 
   def edit
@@ -25,9 +31,14 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    @post.admin_books.update(have_read: true)
-    redirect_to post_path(@post)
+    if @post.update(post_params)
+      @post.admin_books.update(have_read: true)
+      redirect_to post_path(@post)
+    else
+      @book = @post.book
+      flash[:notice] = '評価とコメントを入力してください'
+      render 'edit'
+    end
   end
 
   def show
@@ -35,6 +46,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    post = Post.find(params[:id])
+    if post.destroy
+    post.admin_books.destroy_all
+    redirect_to user_path(current_user)
+    end
   end
 
   private
