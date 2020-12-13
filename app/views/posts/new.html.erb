@@ -5,6 +5,8 @@
 <p><%= @book.publication_date %></p>
 
 <h1>読みたい本を登録</h1>
+<p id="notice"><%= notice %></p>
+
 <h3>読もうと思った目的や背景を教えてください</h3>
   <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
   <h4>小説なら</h4>
