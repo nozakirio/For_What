@@ -1,3 +1,5 @@
+<%= render 'users/profile', user: current_user %>
+
 <h1>検索結果</h1>
 <% if @results.present? %>
   <table class="table">
@@ -18,8 +20,8 @@
         <td><%= link_to result.title,result.item_url %></td>
         <td><%= result.author %></td>
         <td><%= result.publisher_name %></td>
-        <% @book_for_count = Book.find_by(isbn: result.isbn) %>
-        <% @people = AdminBook.where(book_id: @book_for_count, have_read: true).count %>
+        <% book_for_count = Book.find_by(isbn: result.isbn) %>
+        <% @people = AdminBook.where(book_id: book_for_count, have_read: true).count %>
         <td>
           <% if @people == 0 %>
             0人
@@ -28,16 +30,7 @@
           <% end %>
         </td>
         <td>
-          <% already = [] %>
-          <% current_user.books.each do |book| %>
-            <% if book.isbn == result.isbn %>
-              <% already << "yes" %>
-            <% else %>
-              <%  already << "yet" %>
-            <% end %>
-          <% end %>
-          <% if already.include?("yes") %>
-          <% else %>
+          <% if AdminBook.where(user_id: current_user.id,book_id: book_for_count).empty? %>
             <%= form_with model: @book, url: books_path, local: true do |f| %>
               <%= f.hidden_field :title, :value => result.title %>
               <%= f.hidden_field :author, :value => result.author %>
