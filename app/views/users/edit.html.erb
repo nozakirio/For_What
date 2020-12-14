@@ -50,8 +50,7 @@
           <%= f.submit "変更を保存", class:"btn btn-block" %>
         <% end %>
 
-        <h5>既に登録済みの方</h5>
-        <p><%= link_to "こちら", new_user_session_path %>からログインしてください。</p>
+        <p>退会は<%= link_to "こちら", unsubscribe_user_path %>から</p>
       </div>
 
     </div>
