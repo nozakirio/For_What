@@ -8,5 +8,6 @@ class User < ApplicationRecord
   
   has_many :admin_books
   has_many :books, through: :admin_books
+  attachment :profile_image
   
 end
