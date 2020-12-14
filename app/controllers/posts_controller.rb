@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit]
+  
   def index
     @book = Book.find_by(isbn: params[:isbn])
     @posts = Post.where(book_id: @book.id)
@@ -56,6 +58,13 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:book_id, :reason, :star, :comment)
+  end
+  
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to user_path(current_user)
+    end
   end
 
 end

@@ -18,12 +18,13 @@
   </div>
   <p>コメント<%= @post.comment %></p>
 <% end %>
-
 <% if @post.user == current_user && @post.star != nil %>
   <%= link_to "読んだ本から削除", post_path(@post), method: :delete %>
 <% elsif @post.user == current_user && @post.star == nil %>
   <%= link_to "読んだ本に登録", edit_post_path(@post) %>
   <%= link_to "読みたい本から削除", post_path(@post), method: :delete %>
-<% else @post.user != current_user %>
+<% elsif @post.user != current_user && AdminBook.where(user_id: current_user.id,book_id: @post.book.id,have_read: true).present? %>
+  読んだ本に登録済み
+<% else %>
   <%= link_to "読みたい本に登録", new_post_path(@post.book) %>
 <% end %>
