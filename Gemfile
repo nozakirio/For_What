@@ -70,7 +70,6 @@ gem "kaminari"
 gem "jquery-rails"
 
 gem 'rakuten_web_service'
-gem 'acts-as-taggable-on'
 gem 'rubocop-airbnb'
 gem 'dotenv-rails'
 

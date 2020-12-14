@@ -1,26 +1,44 @@
+<p><%= @book.title %></p>
+<p><%= @book.author %></p>
+<p><%= image_tag(@book.book_image_id) %></p>
+<p><%= @book.publication_date %></p>
+
 <h1>レビュー一覧</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>ユーザ名</th>
-      <th>評価</th>
-      <th>読んだ目的や背景</th>
-      <th>読みたい本に登録</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
+<div class="table">
+  <div class="table_line">
+    <div class="box"></div>
+    <div class="box">ユーザー名</div>
+    <div class="box">評価</div>
+    <div class="box">理由</div>
+    <div class="box">リンク</div>
+  </div>
+  <div data-turbolinks="false">
+    <% @posts.each_with_index do |post,index| %>
       <% if post.star != nil %>
-        <tr>
-          <td></td>
-          <td><%= post.user.name %></td>
-          <td>評価</td>
-          <td><%= post.reason %></td>
-        </tr>
+        <div class="table_line">
+        <div class="box">ユーザ画像</div>
+        <div class="box"><%= post.user.name %></div>
+        <div class="box" id="star-<%= index %>" data-score="<%= post.star %>"></div>
+        <div class="box"><%= post.reason %></div>
+        <div class="box">
+          <% if AdminBook.where(book_id: :@book, user_id: current_user) %>
+          <% else %>
+            <%= link_to "読みたい本に登録", new_post_path(book: @book) %>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-    
+<script>
+  $(function () {
+    for (var i=0; i<"<%= @posts.size %>"; i++) {
+    $(`#star-${i}`).raty({
+      size: 36,
+      starOff: "/assets/star-off.png",
+      starOn: "/assets/star-on.png",
+      scoreName: "score"
+    });
+    };
+  });
+</script>

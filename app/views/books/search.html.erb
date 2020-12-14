@@ -18,17 +18,25 @@
         <td><%= link_to result.title,result.item_url %></td>
         <td><%= result.author %></td>
         <td><%= result.publisher_name %></td>
-        <td><%= link_to "xx人", posts_path(isbn: result.isbn) %></td>
+        <% @book_for_count = Book.find_by(isbn: result.isbn) %>
+        <% @people = AdminBook.where(book_id: @book_for_count, have_read: true).count %>
         <td>
-          <% a = [] %>
+          <% if @people == 0 %>
+            0人
+          <% else %>
+            <%= link_to @people, posts_path(isbn: result.isbn) %>人
+          <% end %>
+        </td>
+        <td>
+          <% already = [] %>
           <% current_user.books.each do |book| %>
             <% if book.isbn == result.isbn %>
-              <% a << "a" %>
+              <% already << "yes" %>
             <% else %>
-              <% a << "b" %>
+              <%  already << "yet" %>
             <% end %>
           <% end %>
-          <% if a.include?("a") %>
+          <% if already.include?("yes") %>
           <% else %>
             <%= form_with model: @book, url: books_path, local: true do |f| %>
               <%= f.hidden_field :title, :value => result.title %>
