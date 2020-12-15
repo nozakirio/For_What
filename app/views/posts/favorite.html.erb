@@ -1,0 +1,4 @@
+<% @favorites.each do |favorite| %>
+  <%= favorite.post.user.name %>
+  <%= favorite.post.book.title %>
+<% end %>
