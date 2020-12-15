@@ -1,4 +1,7 @@
-<%= render 'users/profile', user: @user %>
+<div id="user_<%= @user.id %>">
+  <div class="favorite-count_user">
+    <%= render 'users/profile', user: @user %>
+   </div>
 
 <h1>本を探す</h1>
   <%= form_with model: @book,url: search_books_path, method: :get, local: true do |f| %>
@@ -22,7 +25,7 @@
         <td><%= want_read.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= want_read.book.title %></td>
         <td><%= want_read.book.author %></td>
-        <td><%= link_to "投稿詳細", post_path(want_read.post) %></td>
+        <td data-turbolinks="false"><%= link_to "投稿詳細", post_path(want_read.post) %></td>
       </tr>
     <% end %>
   </tbody>

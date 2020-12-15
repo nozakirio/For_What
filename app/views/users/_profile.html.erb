@@ -1,12 +1,15 @@
+<div>
 <p><%= user.name %></p>
 <p><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
 <p><%= (Date.today.strftime('%Y%m%d').to_i - user.birthday.strftime('%Y%m%d').to_i) / 10000 %>歳</p>
 <p><%= user.gender %></p>
 
+
+  <p>お気に入り<%= link_to user.favorites.count,favorite_path(user) %>件</p>
 <% if user == current_user %>
-  <p>お気に入り<%= link_to user.favorites.count,favorite_posts_path(user) %>件</p>
   <p><%= link_to "登録情報編集", edit_user_path(user.id) %></p>
 <% end %>
 
 <p>読んだ本<%= AdminBook.where(user_id: user.id,have_read: true).count %>冊</p>
 <p>読みたい本<%= AdminBook.where(user_id: user.id,want_read: true).count - AdminBook.where(user_id: user.id,have_read: true).count %>冊</p>
+</div>

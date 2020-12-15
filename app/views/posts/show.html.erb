@@ -1,6 +1,8 @@
-<%= render 'users/profile', user: @post.user %>
-
 <div id="post_<%= @post.id %>">
+  <div class="favorite-count">
+    <%= render 'users/profile', user: @post.user %>
+  </div>
+
   <p><%= @post.book.title %></p>
   <p><%= @post.book.author %></p>
   <p><%= image_tag(@post.book.book_image_id) %></p>
