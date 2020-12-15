@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit]
-  
+
   def index
     @book = Book.find_by(isbn: params[:isbn])
     @posts = Post.where(book_id: @book.id)
@@ -46,6 +46,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
   end
+  
+  def favorite
+    @favorites = Favorite.where(user_id: current_user.id)
+  end
 
   def destroy
     post = Post.find(params[:id])
@@ -59,7 +63,7 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:book_id, :reason, :star, :comment)
   end
-  
+
   def ensure_correct_user
     @post = Post.find(params[:id])
     unless @post.user == current_user
