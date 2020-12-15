@@ -1,4 +1,4 @@
 <% @favorites.each do |favorite| %>
   <%= favorite.post.user.name %>
-  <%= favorite.post.book.title %>
+  <%= link_to favorite.post.book.title, post_path(favorite.post) %>
 <% end %>
