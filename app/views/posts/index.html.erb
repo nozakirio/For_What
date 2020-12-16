@@ -20,7 +20,7 @@
         <% @posts.each_with_index do |post,index| %>
           <% if post.star != nil %>
             <div class="table__line">
-            <div class="box"><%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50' %></div></div>
+            <div class="box"><%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></div></div>
             <div class="box"><%= link_to post.user.name, user_path(post.user) %></div>
             <div class="box" id="star-<%= index %>" data-score="<%= post.star %>"></div>
             <div class="box"><%= post.reason %></div>

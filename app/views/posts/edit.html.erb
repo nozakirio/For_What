@@ -1,12 +1,19 @@
 <div class="row">
   <div class="col-md-3">
-    <p><%= @book.title %></p>
-    <p><%= @book.author %></p>
-    <p><%= image_tag(@book.book_image_id) %></p>
-    <p><%= @book.publication_date %></p>
+    <%= render 'users/profile', user: current_user %>
   </div>
   
-  <div class="col-md-9">
+  <div class="col-md-7">
+    <div class="book__info text-center">Book Information</div>
+    <div class="book__content">
+      <p class="book__image"><%= image_tag(@book.book_image_large_id) %></p>
+      <div class="book__text">
+        <p class="book__title"><%= @book.title %></p>
+        <p class="book__author"><%= @book.author %></p>
+        <p class="book__date">発売日：<%= @book.publication_date %></p>
+      </div>
+    </div>
+    
     <h2>読んだ本に登録する</h2>
     <p id="notice"><%= notice %></p>
       <%= form_with model: @post, url: post_path,  method: :patch, local: true do |f| %>

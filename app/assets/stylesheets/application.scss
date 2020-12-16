@@ -1,3 +1,4 @@
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -10,6 +11,30 @@
 .main{
   margin-top: 100px;
 }
+
+// ボタン
+.btn{
+  font-weight: 100;
+  line-height: 1.5;
+  display: inline-block;
+  padding: 0.3rem 0.3em;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.btn-link{
+  color: #fff;
+  background-color: #0090bb;
+}
+.btn-link:hover{
+  color: #fff;
+  background-color: #0080bb;
+}
+
+
 
 // 新規登録、ログインフォーム
 .form {
@@ -38,7 +63,6 @@
 
 // プロフィール
 .profile {
-  margin: 2em 0;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.25);
 }
 
@@ -82,26 +106,26 @@
 
 .table__day{
   display: table-cell;
-	border: solid 1px #999;
+	border-bottom: solid 1px #999;
 	width: 15%;
 	height: 30px;
 }
 .table__title{
   display: table-cell;
-	border: solid 1px #999;
+	border-bottom: solid 1px #999;
 	width: 40%;
 	height: 30px;
 }
 .table__author{
   display: table-cell;
-	border: solid 1px #999;
-	width: 35%;
+	border-bottom: solid 1px #999;
+	width: 30%;
 	height: 30px;
 }
 .table__link{
   display: table-cell;
-	border: solid 1px #999;
-	width: 10%;
+	border-bottom: solid 1px #999;
+	width: 15%;
 	height: 30px;
 }
 
@@ -112,32 +136,61 @@
 
 .table__day2{
   display: table-cell;
-	border: solid 1px #999;
+	border-bottom: solid 1px #999;
 	width: 15%;
 	height: 30px;
 }
 .table__title2{
   display: table-cell;
-	border: solid 1px #999;
-	width: 30%;
+	border-bottom: solid 1px #999;
+	width: 25%;
 	height: 30px;
 }
 .table__author2{
   display: table-cell;
-	border: solid 1px #999;
-	width: 25%;
+	border-bottom: solid 1px #999;
+	width: 20%;
 	height: 30px;
 }
 .table__star2{
   display: table-cell;
-	border: solid 1px #999;
-	width: 20%;
+	border-bottom: solid 1px #999;
+	width: 25%;
 	height: 30px;
 }
 .table__link2{
   display: table-cell;
-	border: solid 1px #999;
-	width: 10%;
+	border-bottom: solid 1px #999;
+	width: 15%;
 	height: 30px;
 }
 
+// 本情報
+.book__content{
+  padding: 15px 0;
+  background: #fff;
+  border: solid 1px #999;
+  display: flex;
+  justify-content: center;
+}
+
+.book__info{
+  font-size: 18px;
+  background: grey;
+  padding: 4px 0;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.book__image{
+  padding-right: 30px;
+}
+
+.book__title{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.book__author{
+  font-size: 15px;
+}

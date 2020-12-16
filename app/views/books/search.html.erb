@@ -42,6 +42,8 @@
                   <%= f.hidden_field :isbn, :value => result.isbn %>
                   <%= f.hidden_field :publication_date, :value => result.sales_date %>
                   <%= f.hidden_field :book_image_id, :value => result.small_image_url %>
+                  <%= f.hidden_field :book_image_large_id, :value => result.large_image_url %>
+                  <%= f.hidden_field :item_url, :value => result.item_url %>
                   <%= f.submit "読みたい本に登録" %>
                 <% end %>
               <% end %>

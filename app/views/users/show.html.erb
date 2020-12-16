@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-3" data-turbolinks="false">
     <%= render 'users/profile', user: @user %>
   </div>
 
@@ -25,7 +25,7 @@
           <div class="table__day"><%= want_read.created_at.strftime('%Y/%m/%d') %></div>
           <div class="table__title"><%= want_read.book.title %></div>
           <div class="table__author"><%= want_read.book.author %></div>
-          <div class="table__link"><%= link_to "投稿詳細", post_path(want_read.post) %></div>
+          <div class="table__link"><%= link_to "投稿詳細", post_path(want_read.post), class: 'btn btn-link' %></div>
         </div>
         <% end %>
       </div>
@@ -47,7 +47,7 @@
           <div class="table__title2"><%= have_read.book.title %></div>
           <div class="table__author2"><%= have_read.book.author %></div>
           <div class="table__star2" id="star-<%= index %>" data-score="<%= have_read.post.star %>"></div>
-          <div class="table__link2"><%= link_to "投稿詳細", post_path(have_read.post) %></div>
+          <div class="table__link2"><%= link_to "投稿詳細", post_path(have_read.post), class: 'btn btn-link'  %></div>
         </div>
         <% end %>
       </div>
