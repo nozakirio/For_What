@@ -1,22 +1,38 @@
+<div class="row">
+  <div class="col-md-3">
+    <p><%= @book.title %></p>
+    <p><%= @book.author %></p>
+    <p><%= image_tag(@book.book_image_id) %></p>
+    <p><%= @book.publication_date %></p>
+  </div>
+  
+  <div class="col-md-9">
+    <h2>読みたい本を登録</h2>
+    <h3>読もうと思った目的や背景を教えてください</h3>
+    <form name="form1">
+      <h4>【小説】</h4>
+      <span id="span"></span>
+        <input type="radio" name="why" value="好きな作家だから", onclick="clickBtn1()" >好きな作家だから
+        <input type="radio" name="why" value="新しい作家にチャレンジ" onclick="clickBtn1()" >新しい作家にチャレンジ
+      <h4>【ビジネス書・新書・専門書】</h4>
+      <h5>・内容に関わる知識</h5>
+        <input type="radio" name="why" value="初学者", onclick="clickBtn1()" >初学者
+        <input type="radio" name="why" value="基礎的なことは分かる", onclick="clickBtn1()" >基礎的なことは分かる
+    </form>
+      
+      <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+      <h4>【自由記入】</h4>
+        <%= f.text_field :reason %>
+        <%= f.hidden_field :book_id, :value => @book.id %>
+        <%= f.submit "読みたい本に登録" %>
+      <% end %>
 
-<p><%= @book.title %></p>
-<p><%= @book.author %></p>
-<p><%= image_tag(@book.book_image_id) %></p>
-<p><%= @book.publication_date %></p>
+  </div>
+</div>
 
-<h1>読みたい本を登録</h1>
-<p id="notice"><%= notice %></p>
-
-<h3>読もうと思った目的や背景を教えてください</h3>
-  <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
-  <h4>小説なら</h4>
-  <p>好きな作家だから、新しい作家にチャレンジ、好きなジャンルだから、など</p>
-  <h4>ビジネス書・新書・専門書なら</h4>
-  <p></p>
-    
-    <%= f.text_field :reason %>
-    <%= f.hidden_field :book_id, :value => @book.id %>
-    <%= f.submit "読みたい本に登録" %>
-  <% end %>
-
-
+<script>
+  function clickBtn1(){
+  	var why = document.form1.why.value;
+	  document.getElementById("span").textContent = why;
+  }
+</script>

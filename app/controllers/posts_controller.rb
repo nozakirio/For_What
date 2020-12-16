@@ -46,9 +46,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
   end
-  
+
   def favorite
-    @favorites = Favorite.where(user_id: current_user.id)
+    @user = User.find(params[:id])
+    @favorites = Favorite.where(user_id: params[:id])
   end
 
   def destroy

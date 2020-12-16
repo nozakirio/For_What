@@ -1,1 +1,2 @@
 $("#post_<%= @post.id %> .favorite-btn").html("<%= j(render 'favorites/favorite-btn', post: @post) %>");
+$("#post_<%= @post.id %> .favorite-count").html("<%= j(render 'users/profile', user: @post.user) %>");

@@ -2,9 +2,9 @@ class BooksController < ApplicationController
   def search
     @keyword = params[:keyword]
     @model = params[:model]
-    if params[:keyword] && @model == "title"
+    if @keyword.present? && @model == "title"
       @results = RakutenWebService::Books::Book.search(title: @keyword)
-    else params[:keyword] && @model == "author"
+    elsif @keyword.present? && @model == "author"
       @results = RakutenWebService::Books::Book.search(author: @keyword)
     end
     @book = Book.new
