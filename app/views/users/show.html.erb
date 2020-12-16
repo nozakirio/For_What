@@ -1,57 +1,58 @@
-<div id="user_<%= @user.id %>">
-  <div class="favorite-count_user">
+<div class="row">
+  <div class="col-md-3">
     <%= render 'users/profile', user: @user %>
-   </div>
-
-<h1>本を探す</h1>
-  <%= form_with model: @book,url: search_books_path, method: :get, local: true do |f| %>
-    <%= f.select :model, options_for_select({ "タイトル" => "title", "著者" => "author" }) %>
-    <%= text_field :keyword, "", placeholder:'書籍タイトル、著者', size: 40 %>
-    <%= f.submit "検索" %>
-  <% end %>
-
-<h1>読みたい本</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>登録日</th>
-      <th>タイトル</th>
-      <th>著者名</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @want_reads.each do |want_read| %>
-      <tr>
-        <td><%= want_read.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= want_read.book.title %></td>
-        <td><%= want_read.book.author %></td>
-        <td data-turbolinks="false"><%= link_to "投稿詳細", post_path(want_read.post) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<h1>読んだ本</h1>
-<div class="table">  
-  <div class="table_line">
-    <div class="box">読了日</div>
-    <div class="box">タイトル</div>
-    <div class="box">著者名</div>
-    <div class="box">評価</div>
-    <div class="box">リンク</div>
   </div>
-  <div data-turbolinks="false">
-    <% @have_reads.each_with_index do |have_read,index| %>
-    <div class="table_line">
-      <div class="box"><%= have_read.updated_at.strftime('%Y/%m/%d') %></div>
-      <div class="box"><%= have_read.book.title %></div>
-      <div class="box"><%= have_read.book.author %></div>
-      <div class="box" id="star-<%= index %>" data-score="<%= have_read.post.star %>"></div>
-      <div class="box"><%= link_to "投稿詳細", post_path(have_read.post) %></div>
+
+  <div class="col-md-9">
+    <h2>本を探す</h2>
+      <%= form_with model: @book,url: search_books_path, method: :get, local: true do |f| %>
+        <%= f.select :model, options_for_select({ "タイトル" => "title", "著者" => "author" }) %>
+        <%= text_field :keyword, "", placeholder:'書籍タイトル、著者', size: 40 %>
+        <%= f.submit "検索" %>
+      <% end %>
+
+    <h2>読みたい本</h2>
+    <div class="table">
+      <div class="table__line-title">
+        <div class="table__day ">登録日</div>
+        <div class="table__title">タイトル</div>
+        <div class="table__author">著者名</div>
+        <div class="table__link"></div>
+      </div>
+      <div data-turbolinks="false">
+        <% @want_reads.each do |want_read| %>
+        <div class="table__line">
+          <div class="table__day"><%= want_read.created_at.strftime('%Y/%m/%d') %></div>
+          <div class="table__title"><%= want_read.book.title %></div>
+          <div class="table__author"><%= want_read.book.author %></div>
+          <div class="table__link"><%= link_to "投稿詳細", post_path(want_read.post) %></div>
+        </div>
+        <% end %>
+      </div>
+
+    <h2>読んだ本</h2>
+    <div class="table">
+      <div class="table__line-title">
+        <div class="table__day2">読了日</div>
+        <div class="table__title2">タイトル</div>
+        <div class="table__author2">著者名</div>
+        <div class="table__star2">評価</div>
+        <div class="table__link2">リンク</div>
+      </div>
+      <div data-turbolinks="false">
+        <% @have_reads.each_with_index do |have_read,index| %>
+        <div class="table__line">
+          <div class="table__day2"><%= have_read.updated_at.strftime('%Y/%m/%d') %></div>
+          <div class="table__title2"><%= have_read.book.title %></div>
+          <div class="table__author2"><%= have_read.book.author %></div>
+          <div class="table__star2" id="star-<%= index %>" data-score="<%= have_read.post.star %>"></div>
+          <div class="table__link2"><%= link_to "投稿詳細", post_path(have_read.post) %></div>
+        </div>
+        <% end %>
+      </div>
     </div>
-    <% end %>
   </div>
+  
 </div>
 
 <script>

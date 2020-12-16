@@ -1,15 +1,18 @@
-<div>
-<p><%= user.name %></p>
-<p><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
-<p><%= (Date.today.strftime('%Y%m%d').to_i - user.birthday.strftime('%Y%m%d').to_i) / 10000 %>歳</p>
-<p><%= user.gender %></p>
-
-
-  <p>お気に入り<%= link_to user.favorites.count,favorite_path(user) %>件</p>
-<% if user == current_user %>
-  <p><%= link_to "登録情報編集", edit_user_path(user.id) %></p>
-<% end %>
-
-<p>読んだ本<%= AdminBook.where(user_id: user.id,have_read: true).count %>冊</p>
-<p>読みたい本<%= AdminBook.where(user_id: user.id,want_read: true).count - AdminBook.where(user_id: user.id,have_read: true).count %>冊</p>
+<div class="profile">
+  <div class="profile__title text-center">プロフィール</div>
+  <div class="profile__image text-center"><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></div>
+  <div class="profile__name text-center"><%= user.name %></div>
+  <div  class="profile__content text-center">
+    <p>年齢：<%= (Date.today.strftime('%Y%m%d').to_i - user.birthday.strftime('%Y%m%d').to_i) / 10000 %>歳</p>
+    <p>性別：<%= user.gender %></p>
+    <p>お気に入り：<%= link_to user.favorites.count,favorite_path(user) %>件</p>
+    <% if user == current_user %>
+      <p><%= link_to "登録情報編集", edit_user_path(user.id), class:"btn btn-default" %></p>
+    <% end %>
+  </div>
+  <div class="profile__book">
+    <h5>読書記録</h5>
+    <div>読んだ本：<%= AdminBook.where(user_id: user.id,have_read: true).count %>冊</div>
+    <div>読みたい本：<%= AdminBook.where(user_id: user.id,want_read: true).count - AdminBook.where(user_id: user.id,have_read: true).count %>冊</div>
+  </div>
 </div>

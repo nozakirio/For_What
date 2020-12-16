@@ -2,31 +2,35 @@
   <div class="col-md-4 col-md-offset-4">
 
     <div class="form">
-      <div class="form-header text-center">
-        <h4 class="form-header-title">ログイン</h4>
+      <div class="form__header text-center">
+        <h4 class="form__header-title">ログイン</h4>
       </div>
-      <div class="form-body">
+      <div class="form__body">
         <div class="text-center">
           <h5>メールアドレスと<br>パスワードを入力してください。</h5>
         </div>
         <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-          <div class="form-group has-feedback">
-            <label class="control-label sr-only" for="inputEmail">メールアドレス</label>
+          <div class="form__group has-feedback">
+            <label class="sr-only">メールアドレス</label>
             <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"メールアドレス"%>
             <span class="fa fa-envelope form-control-feedback" aria-hidden="true"></span>
             </div>
-          <div class="form-group has-feedback">
-            <label class="control-label sr-only" for="inputPassword">パスワード</label>
+          <div class="form__group has-feedback">
+            <label class="sr-only" for="inputPassword">パスワード</label>
             <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード" %>
             <span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
           </div>
-          <%= f.submit "ログイン", class:"btn btn-block mt-20" %>
-        <% end %> 
-        <div>
+          <div class="form__group">
+            <%= f.submit "ログイン", class:"btn btn-block" %>
+          </div>
+        <% end %>
+
+        <div class="form__attention">
           <h5>登録がお済みでない方</h5>
           <p><%= link_to "こちら", new_user_registration_path %>から新規登録を行ってください。</p>
         </div>
+
       </div>
     </div>
   </div>

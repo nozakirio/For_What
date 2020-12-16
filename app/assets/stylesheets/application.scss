@@ -1,35 +1,143 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main{
+  margin-top: 100px;
+}
+
+// 新規登録、ログインフォーム
 .form {
   background: #fff;
-  top: 50%;
-  left: 50%;
-  box-shadow: 0px 2px 5px rgba(0,0,0,.25);
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.25);
 }
 
-.form-group{
-  width: 80%;
-  margin: 0 auto;
-}
-
-.form-header{
+.form__header {
   background-color: grey;
   height: 40px;
 }
 
-.form-header-title{
+.form__header-title {
   line-height: 40px;
   color: white;
 }
 
-.table_line {
-	display: table;
-	width: 1000px;
-}
-	
-.box {
-	display: table-cell;
-	border: solid 1px #999;
-	width: 200px;
+.form__group{
+  width: 80%;
+  margin: 15px auto;
 }
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+.form__attention{
+  padding: 0 0 5px 15px ;
+}
+
+// プロフィール
+.profile {
+  margin: 2em 0;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.25);
+}
+
+.profile__title {
+  font-size: 18px;
+  background: grey;
+  padding: 4px 0;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.profile__image{
+  margin-top: 10px;
+}
+
+.profile__name {
+  padding: 5px 20px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.profile__content{
+  margin: 2px 2px 0 0;
+}
+
+.profile__book{
+  padding:0 0 5px 30px;
+}
+
+// 本一覧
+
+.table__line {
+	display: table;
+	width: 100%;
+}
+
+.table__line-title {
+	display: table;
+	width: 100%;
+}
+
+.table__day{
+  display: table-cell;
+	border: solid 1px #999;
+	width: 15%;
+	height: 30px;
+}
+.table__title{
+  display: table-cell;
+	border: solid 1px #999;
+	width: 40%;
+	height: 30px;
+}
+.table__author{
+  display: table-cell;
+	border: solid 1px #999;
+	width: 35%;
+	height: 30px;
+}
+.table__link{
+  display: table-cell;
+	border: solid 1px #999;
+	width: 10%;
+	height: 30px;
+}
+
+.table__line-title2 {
+	display: table;
+	width: 100%;
+}
+
+.table__day2{
+  display: table-cell;
+	border: solid 1px #999;
+	width: 15%;
+	height: 30px;
+}
+.table__title2{
+  display: table-cell;
+	border: solid 1px #999;
+	width: 30%;
+	height: 30px;
+}
+.table__author2{
+  display: table-cell;
+	border: solid 1px #999;
+	width: 25%;
+	height: 30px;
+}
+.table__star2{
+  display: table-cell;
+	border: solid 1px #999;
+	width: 20%;
+	height: 30px;
+}
+.table__link2{
+  display: table-cell;
+	border: solid 1px #999;
+	width: 10%;
+	height: 30px;
+}
+
