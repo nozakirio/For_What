@@ -1,49 +1,56 @@
-<%= render 'users/profile', user: current_user %>
-
-<h1>検索結果</h1>
-<% if @results.present? %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>タイトル</th>
-        <th>著者名</th>
-        <th>出版社</th>
-        <th>読んだ人</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @results.each do |result| %>
-      <tr>
-        <td><%= link_to image_tag(result.small_image_url),result.item_url %></td>
-        <td><%= link_to result.title,result.item_url %></td>
-        <td><%= result.author %></td>
-        <td><%= result.publisher_name %></td>
-        <% book_for_count = Book.find_by(isbn: result.isbn) %>
-        <% @people = AdminBook.where(book_id: book_for_count, have_read: true).count %>
-        <td>
-          <% if @people == 0 %>
-            0人
-          <% else %>
-            <%= link_to @people, posts_path(isbn: result.isbn) %>人
+<div class="row">
+  
+  <div class="col-md-3">
+    <%= render 'users/profile', user: current_user %>
+  </div>
+  
+  <div class="col-md-9">
+    <h1>検索結果</h1>
+    <% if @results.present? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>タイトル</th>
+            <th>著者名</th>
+            <th>出版社</th>
+            <th>読んだ人</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @results.each do |result| %>
+          <tr>
+            <td><%= link_to image_tag(result.small_image_url),result.item_url %></td>
+            <td><%= link_to result.title,result.item_url %></td>
+            <td><%= result.author %></td>
+            <td><%= result.publisher_name %></td>
+            <% book_for_count = Book.find_by(isbn: result.isbn) %>
+            <% @people = AdminBook.where(book_id: book_for_count, have_read: true).count %>
+            <td>
+              <% if @people == 0 %>
+                0人
+              <% else %>
+                <%= link_to @people, posts_path(isbn: result.isbn) %>人
+              <% end %>
+            </td>
+            <td>
+              <% if AdminBook.where(user_id: current_user.id,book_id: book_for_count).empty? %>
+                <%= form_with model: @book, url: books_path, local: true do |f| %>
+                  <%= f.hidden_field :title, :value => result.title %>
+                  <%= f.hidden_field :author, :value => result.author %>
+                  <%= f.hidden_field :isbn, :value => result.isbn %>
+                  <%= f.hidden_field :publication_date, :value => result.sales_date %>
+                  <%= f.hidden_field :book_image_id, :value => result.small_image_url %>
+                  <%= f.submit "読みたい本に登録" %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
           <% end %>
-        </td>
-        <td>
-          <% if AdminBook.where(user_id: current_user.id,book_id: book_for_count).empty? %>
-            <%= form_with model: @book, url: books_path, local: true do |f| %>
-              <%= f.hidden_field :title, :value => result.title %>
-              <%= f.hidden_field :author, :value => result.author %>
-              <%= f.hidden_field :isbn, :value => result.isbn %>
-              <%= f.hidden_field :publication_date, :value => result.sales_date %>
-              <%= f.hidden_field :book_image_id, :value => result.small_image_url %>
-              <%= f.submit "読みたい本に登録" %>
-            <% end %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-<% end %>
+        </tbody>
+      </table>
+    <% end %>
+    
+  </div>
+</div>

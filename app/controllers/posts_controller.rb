@@ -48,6 +48,7 @@ class PostsController < ApplicationController
   end
 
   def favorite
+    @user = User.find(params[:id])
     @favorites = Favorite.where(user_id: params[:id])
   end
 

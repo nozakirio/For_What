@@ -7,7 +7,7 @@
     <h2>本を探す</h2>
       <%= form_with model: @book,url: search_books_path, method: :get, local: true do |f| %>
         <%= f.select :model, options_for_select({ "タイトル" => "title", "著者" => "author" }) %>
-        <%= text_field :keyword, "", placeholder:'書籍タイトル、著者', size: 40 %>
+        <%= text_field :keyword, "", placeholder:'書籍タイトル、著者', size: 40, name: 'keyword' %>
         <%= f.submit "検索" %>
       <% end %>
 
@@ -29,6 +29,7 @@
         </div>
         <% end %>
       </div>
+    </div>
 
     <h2>読んだ本</h2>
     <div class="table">
