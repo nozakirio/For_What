@@ -14,8 +14,7 @@
             <th>タイトル</th>
             <th>著者名</th>
             <th>出版社</th>
-            <th>読んだ人</th>
-            <th></th>
+            <th>人数</th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +43,7 @@
                   <%= f.hidden_field :book_image_id, :value => result.small_image_url %>
                   <%= f.hidden_field :book_image_large_id, :value => result.large_image_url %>
                   <%= f.hidden_field :item_url, :value => result.item_url %>
-                  <%= f.submit "読みたい本に登録" %>
+                  <%= f.submit "読みたい本登録" %>
                 <% end %>
               <% end %>
             </td>
