@@ -7,7 +7,9 @@
 
       <div class="form__body">
         <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+          <div class="text-center msg">
           <%= render "devise/shared/error_messages", resource: resource %>
+          </div>
           <div class="form__group has-feedback">
             <label class="sr-only">ニックネーム</label>
             <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"ニックネーム"%>

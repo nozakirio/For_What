@@ -5,6 +5,8 @@
 
   <div class="col-md-9">
     <h2>本を探す</h2>
+      <%= render "layouts/flash" %>
+      
       <%= form_with model: @book,url: search_books_path, method: :get, local: true do |f| %>
         <%= f.select :model, options_for_select({ "タイトル" => "title", "著者" => "author" }) %>
         <%= text_field :keyword, "", placeholder:'書籍タイトル、著者', size: 40, name: 'keyword' %>

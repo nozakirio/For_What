@@ -27,9 +27,9 @@
           <input type="radio" name="why" value="初学者", onclick="clickBtn1()" >初学者
           <input type="radio" name="why" value="基礎的なことは分かる", onclick="clickBtn1()" >基礎的なことは分かる
       </form>
-        
         <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
         <h4>【自由記入】</h4>
+          <%= render "layouts/flash" %>
           <%= f.text_field :reason %>
           <%= f.hidden_field :book_id, :value => @book.id %>
           <%= f.submit "読みたい本に登録" %>

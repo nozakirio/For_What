@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     else
       @book = @post.book
       @post = Post.new
-      flash[:notice] = '目的や背景を入力してください'
+      flash[:alert] = '読もうと思った目的や背景を入力してください'
       render 'new'
     end
   end

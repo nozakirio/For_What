@@ -6,6 +6,9 @@ class BooksController < ApplicationController
       @results = RakutenWebService::Books::Book.search(title: @keyword)
     elsif @keyword.present? && @model == "author"
       @results = RakutenWebService::Books::Book.search(author: @keyword)
+    else
+      flash[:notice] = "キーワードを入力してください。"
+      redirect_to user_path(current_user)
     end
     @book = Book.new
   end
