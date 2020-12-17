@@ -20,7 +20,7 @@
             <div class="table__title2"><%= favorite.post.book.title %></div>
             <div class="table__author2"><%= favorite.post.book.author %></div>
             <div class="table__star2" id="star-<%= index %>" data-score="<%= favorite.post.star %>"></div>
-            <div class="table__link2"><%= link_to "投稿詳細", post_path(favorite.post) %></div>
+            <div class="table__link2"><%= link_to "投稿詳細", post_path(favorite.post), class: 'btn btn-link' %></div>
           </div>
         <% end %>
       </div>

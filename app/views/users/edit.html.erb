@@ -37,17 +37,6 @@
               <%= f.radio_button :gender, "女性", class:"radio" %>女性
              </label>
           </div>
-
-          <div class="form__group has-feedback">
-            <label class="sr-only" for="inputPassword">パスワード(6文字以上)</label>
-            <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード" %>
-            <span class="fa fa-lock form-control-feedback" aria-hidden="true"></span>
-          </div>
-          <div class="form__group has-feedback">
-            <label class="sr-only" for="inputConfirmPassword">パスワード(確認用)</label>
-            <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", id:"inputConfirmPassword", placeholder:"パスワード確認" %>
-            <span class="fa fa-check-circle-o form-control-feedback" aria-hidden="true"></span>
-          </div>
           <div class="form__group">
           <%= f.submit "変更を保存", class:"btn btn-block" %>
            </div>
