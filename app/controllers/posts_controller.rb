@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.reason =params[:reason]
     @post.user_id = current_user.id
     if @post.save
       admin_book = @post.admin_books.build(user_id: current_user.id, book_id: @post.book_id, want_read: true)
