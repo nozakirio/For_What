@@ -10,7 +10,11 @@
           <h5>メールアドレスと<br>パスワードを入力してください。</h5>
         </div>
         <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="text-center msg">
+            <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+            <% end %>  
+          </div>
           <div class="form__group has-feedback">
             <label class="sr-only">メールアドレス</label>
             <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"メールアドレス"%>

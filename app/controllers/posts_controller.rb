@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.reason =params[:reason]
     @post.user_id = current_user.id
     if @post.save
       admin_book = @post.admin_books.build(user_id: current_user.id, book_id: @post.book_id, want_read: true)
@@ -21,7 +22,7 @@ class PostsController < ApplicationController
     else
       @book = @post.book
       @post = Post.new
-      flash[:notice] = '目的や背景を入力してください'
+      flash[:alert] = '読もうと思った目的や背景を入力してください'
       render 'new'
     end
   end

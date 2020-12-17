@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      user: 
+        name: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        birthday: 誕生日
+        gender: 性別
+      post: 
+        star: 評価

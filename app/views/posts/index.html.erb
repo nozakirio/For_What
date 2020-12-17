@@ -1,30 +1,33 @@
 <div class="row">
-  <div class="col-md-3">
-    <p><%= @book.title %></p>
-    <p><%= @book.author %></p>
-    <p><%= image_tag(@book.book_image_id) %></p>
-    <p><%= @book.publication_date %></p>
+  <div class="col-md-5">
+    <div class="book__info text-center">Book Information</div>
+    <div class="book__content">
+      <p class="book__image"><%= image_tag(@book.book_image_large_id) %></p>
+      <div class="book__text">
+        <p class="book__title"><%= @book.title %></p>
+        <p class="book__author"><%= @book.author %></p>
+        <p class="book__date">発売日：<%= @book.publication_date %></p>
+      </div>
+    </div>
   </div>
-  
-  <div class="col-md-9">
-    <h1>レビュー一覧</h1>
+  <div class="col-md-7">
+    <h2>レビュー一覧</h2>
     <div class="table">
       <div class="table__line-title">
-        <div class="box"></div>
-        <div class="box">ユーザー名</div>
-        <div class="box">評価</div>
-        <div class="box">理由</div>
-        <div class="box">リンク</div>
+        <div class="table__day"></div>
+        <div class="table__title">ユーザー名</div>
+        <div class="table__author">評価</div> 
+        <div class="table__link"></div>
       </div>
       <div data-turbolinks="false">
         <% @posts.each_with_index do |post,index| %>
           <% if post.star != nil %>
             <div class="table__line">
-            <div class="box"><%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50' %></div></div>
-            <div class="box"><%= link_to post.user.name, user_path(post.user) %></div>
-            <div class="box" id="star-<%= index %>" data-score="<%= post.star %>"></div>
-            <div class="box"><%= post.reason %></div>
-            <div class="box"><%= link_to "投稿詳細", post_path(post) %></div>
+              <div class="table__day"><%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %></div>
+              <div class="table__title"><%= link_to post.user.name, user_path(post.user) %></div>
+              <div class="table__author" id="star-<%= index %>" data-score="<%= post.star %>"></div>
+              <div class="table__link"><%= link_to "投稿詳細", post_path(post), class: 'btn btn-link' %></div>
+            </div>
           <% end %>
         <% end %>
       </div>

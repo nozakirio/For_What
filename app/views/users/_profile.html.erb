@@ -1,5 +1,5 @@
 <div class="profile">
-  <div class="profile__title text-center">プロフィール</div>
+  <div class="profile__title text-center">Profile</div>
   <div class="profile__image text-center"><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></div>
   <div class="profile__name text-center"><%= user.name %></div>
   <div  class="profile__content text-center">
@@ -7,7 +7,7 @@
     <p>性別：<%= user.gender %></p>
     <p>お気に入り：<%= link_to user.favorites.count,favorite_path(user) %>件</p>
     <% if user == current_user %>
-      <p><%= link_to "登録情報編集", edit_user_path(user.id), class:"btn btn-default" %></p>
+      <%= link_to "登録情報編集", edit_user_path(user.id), class:"btn btn-default" %>
     <% end %>
   </div>
   <div class="profile__book">
