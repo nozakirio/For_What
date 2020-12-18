@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     else
       @book = @post.book
       @post = Post.new
-      flash[:alert] = '読もうと思った目的や背景を入力してください'
+      flash.now[:alert] = '入力は必須です'
       render 'new'
     end
   end
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       @book = @post.book
-      flash[:notice] = '評価とコメントを入力してください'
+      flash.now[:alert] = '評価とコメントを入力してください'
       render 'edit'
     end
   end

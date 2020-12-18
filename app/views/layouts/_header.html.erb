@@ -4,7 +4,7 @@
       <%= link_to "For What?", root_path, class: "logo" %>
     </nav>
     <nav>
-      <ul class="nav navbar-right" style="padding:10px 0">
+      <ul class="nav navbar-left" style="padding:5px 30px">
         <% if user_signed_in? %>
           <%= link_to 'マイページ', user_path(current_user), class: 'btn btn-nav' %>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-nav' %>
