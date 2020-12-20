@@ -30,11 +30,11 @@ h2:before {
 }
 
 .navbar{
-  border-bottom: solid 2px #EF774A;
+  border-bottom: solid 2px #5573D2;
 }
 
 footer{
-  border-top: solid 2px #EF774A;
+  border-top: solid 2px #5573D2;
 }
 
 .msg{
@@ -52,7 +52,7 @@ footer{
 .radio-area input[type="radio"] + label {
   margin       : 0 8px;
   font-size     : 15px;
-  font-weight   : normal;   
+  font-weight   : normal;
   border-radius : 5px;
 }
 
@@ -91,8 +91,6 @@ footer{
   line-height: 30px;
 }
 
-
-
 // ボタン
 a{
   color:black;
@@ -117,19 +115,17 @@ a:hover{
 
 .btn-nav {
   color: #fff;
-  background-color: #EF774A;
-  border-bottom: 5px solid #b84c00;
+  margin-right: 10px;
+  background-color: #5573D2;
+  border-bottom: 5px solid #1f3b91;
 }
 .btn-nav:hover {
   margin-top: 3px;
   color: #fff;
-  background: #EF774A;
-  border-bottom: 2px solid #b84c00;
+  background-color: #5573D2;
+  border-bottom: 2px solid #5573D2;
 }
-.btn-nev {
-  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-}
+
 .btn-link{
   color: #fff;
   background-color: #5573D2;
@@ -151,15 +147,59 @@ a:hover{
   background-color: #E64E00;
 }
 
+// 検索フォーム
+#search-form{
+  position:relative;
+  max-width:300px;
+}
+
+.search-select {
+  width:150px;
+  height:40px;
+  padding:0 10px;
+  left: 0;
+  top:0;
+  border:none;
+  border-radius:2px;
+  outline:0;
+  background:#eee;
+}
+
+#search-box {
+  height:40px;
+  padding:0 20px;
+  position:absolute;
+  left: 160px;
+  top:0;
+  border:none;
+  border-radius:2px;
+  outline:0;
+  background:#eee;
+}
+
+#search-button{
+  height:40px;
+  position:absolute;
+  left:450px;
+  top:0;
+  background:none;
+  color:#666;
+  border:none;
+  font-size:15px;
+}
+
+#search-button:hover{
+  color:#55CFAA;
+}
 
 // 新規登録、ログインフォーム
 .form {
   background: #fff;
-  box-shadow: 0px 2px 5px rgba(239, 119, 74,0.25);
+  box-shadow: 0px 2px 5px rgba(85, 207, 170, 0.25);
 }
 
 .form__header {
-  background-color: #EF774A;
+  background-color: #55CFAA;
   height: 40px;
 }
 

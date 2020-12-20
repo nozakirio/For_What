@@ -6,11 +6,15 @@
   <div class="col-md-9">
     <%= render "layouts/flash" %>
     <h2>本を探す</h2>
+    <div id="search-form">
       <%= form_with model: @book,url: search_books_path, method: :get, local: true do |f| %>
-        <%= f.select :model, options_for_select({ "タイトル" => "title", "著者" => "author" }) %>
-        <%= text_field :keyword, "", placeholder:'書籍タイトル、著者', size: 40, name: 'keyword' %>
-        <%= f.submit "検索" %>
+        <%= f.select :model, options_for_select({ "タイトル" => "title", "著者" => "author" }),{},{class: 'search-select'}  %>
+        <%= text_field :keyword, "", placeholder:'書籍タイトル、著者', size: 40, name: 'keyword', id: "search-box" %>
+        <%= f.button :type => "submit", id: "search-button" do  %>
+          <i class='fa fa-search'></i>
+        <% end %>
       <% end %>
+    </div>
 
     <h2>読みたい本</h2>
     <div class="table">
@@ -54,7 +58,7 @@
       </div>
     </div>
   </div>
-  
+
 </div>
 
 <script>
