@@ -3,7 +3,7 @@
     <div class="favorite-count col-md-3">
       <%= render 'users/profile', user: @post.user %>
     </div>
-    <div class="col-md-7 book">
+    <div class="col-md-9 book">
       <div class="book__info text-center">Book Information</div>
       <div class="book__content">
         <p class="book__image"><%= image_tag(@post.book.book_image_large_id) %></p>
@@ -15,19 +15,20 @@
       </div>
       <% if @post.star == nil %>
         <h2>読みたい本詳細</h2>
-        <h4>目的・背景</h4>
-        <p><%= @post.reason %></p>
+        <h3>【目的・背景】</h3>
+        <h4><%= @post.reason %></h4>
       <% else %>
         <h2>読んだ本詳細</h2>
-        <h3>目的・背景</h3>
-        <p><%= @post.reason %></p>
+        <h3>【目的・背景】</h3>
+        <h4>  <%= @post.reason %></h4>
         <div data-turbolinks="false">
-        <div id="star" data-score="<%= @post.star %>"></div>
+        <h3>【評価】</h3> <div id="star" data-score="<%= @post.star %>"></div>
         </div>
-        <p>コメント<%= @post.comment %></p>
+        <h3>【コメント】</h3>
+        <h4>  <%= @post.comment %></h4>
       <% end %>
       
-      <div class="favorite-btn">
+      <div class="favorite-btn" style='margin:10px 0'>
         <%= render 'favorites/favorite-btn', post: @post %>
       </div>
       
@@ -35,7 +36,7 @@
         <%= link_to "読んだ本から削除", post_path(@post), method: :delete, class: 'btn btn-del' %>
       <% elsif @post.user == current_user && @post.star == nil %>
         <%= link_to "読んだ本に登録", edit_post_path(@post), class: 'btn btn-link'%>
-        <%= link_to "読みたい本から削除", post_path(@post), method: :delete, class: 'btn btn-del' %>
+        <%= link_to "読みたい本から削除", post_path(@post), method: :delete, class: 'btn btn-del', style: 'margin-left:5px' %>
       <% elsif @post.user != current_user && AdminBook.where(user_id: current_user.id,book_id: @post.book.id,have_read: true).present? %>
         読んだ本に登録済み
       <% else @post.user != current_user && @post.favorited_by?(current_user) %>

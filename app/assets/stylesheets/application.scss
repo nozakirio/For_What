@@ -49,6 +49,13 @@ footer{
   color: red;
 }
 
+.radio-area input[type="radio"] + label {
+  margin       : 0 8px;
+  font-size     : 15px;
+  font-weight   : normal;   
+  border-radius : 5px;
+}
+
 // トップ
 .main-visual {
   width: 100%;
