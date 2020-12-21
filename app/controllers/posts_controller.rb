@@ -13,10 +13,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.reason =params[:reason]
+    @post.reason = params[:reason]
     @post.user_id = current_user.id
     if @post.save
-      admin_book = @post.admin_books.build(user_id: current_user.id, book_id: @post.book_id, want_read: true)
+      admin_book = @post.admin_books.build(
+        user_id: current_user.id, book_id: @post.book_id, want_read: true
+      )
       admin_book.save
       redirect_to post_path(@post)
     else
@@ -56,12 +58,13 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     if post.destroy
-    post.admin_books.destroy_all
-    redirect_to user_path(current_user)
+      post.admin_books.destroy_all
+      redirect_to user_path(current_user)
     end
   end
 
   private
+
   def post_params
     params.require(:post).permit(:book_id, :reason, :star, :comment)
   end
@@ -72,5 +75,4 @@ class PostsController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
 end

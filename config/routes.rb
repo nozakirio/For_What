@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'homes#top'
   get '/about' => 'homes#about'
-  get '/favorites/:id' => 'posts#favorite',as: 'favorite'
+  get '/favorites/:id' => 'posts#favorite', as: 'favorite'
 
   resources :books, only: [:show, :create] do
     collection do
@@ -20,5 +20,4 @@ Rails.application.routes.draw do
       patch :withdraw
     end
   end
-
 end
