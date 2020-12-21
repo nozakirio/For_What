@@ -8,7 +8,7 @@
       <div class="book__content">
         <p class="book__image"><%= image_tag(@post.book.book_image_large_id) %></p>
         <div class="book__text">
-          <p class="book__title"><%= @post.book.title %></p>
+          <p class="book__title"><%= link_to @post.book.title,@post.book.item_url %></p>
           <p class="book__author"><%= @post.book.author %></p>
           <p class="book__date">発売日：<%= @post.book.publication_date %></p>
         </div>
@@ -27,11 +27,11 @@
         <h3>【コメント】</h3>
         <h4>  <%= @post.comment %></h4>
       <% end %>
-      
+
       <div class="favorite-btn" style='margin:10px 0'>
         <%= render 'favorites/favorite-btn', post: @post %>
       </div>
-      
+
       <% if @post.user == current_user && @post.star != nil %>
         <%= link_to "読んだ本から削除", post_path(@post), method: :delete, class: 'btn btn-del' %>
       <% elsif @post.user == current_user && @post.star == nil %>
