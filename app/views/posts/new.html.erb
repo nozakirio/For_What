@@ -3,47 +3,68 @@
     <%= render 'users/profile', user: current_user %>
   </div>
 
-  <div class="col-md-7 book">
+  <div class="col-md-9 book">
     <div class="book__info text-center">Book Information</div>
     <div class="book__content">
       <p class="book__image"><%= image_tag(@book.book_image_large_id) %></p>
       <div class="book__text">
-        <p class="book__title"><%= @book.title %></p>
+        <p class="book__title"><%= link_to @book.title,@book.item_url %></p>
         <p class="book__author"><%= @book.author %></p>
         <p class="book__date">発売日：<%= @book.publication_date %></p>
       </div>
     </div>
-
     <div>
       <h2>読みたい本を登録</h2>
-      <h4>読もうと思った目的や背景を教えてください</h4>
+      <h4>読もうと思った目的や背景を教えてください。</h4>
+      <p>チェックボックスを選択、もしくは自由記入欄に記入してください。</p>
       <form name="form1">
         <h4>【小説】</h4>
-          <input type="radio" name="why" value="好きな作家だから" onclick="clickBtn1()">好きな作家だから
-          <input type="radio" name="why" value="新しい作家にチャレンジ" onclick="clickBtn1()">新しい作家にチャレンジ
-          <input type="radio" name="why" value="好きなジャンルだから" onclick="clickBtn1()">好きなジャンルだから
-          <input type="radio" name="why" value="新しいジャンルにチャレンジ" onclick="clickBtn1()">新しいジャンルにチャレンジ
-          <input type="radio" name="why" value="売れ筋の本だから" onclick="clickBtn1()">売れ筋の本だから
-          <input type="radio" name="why" value="学校や会社からの課題" onclick="clickBtn1()">学校や会社からの課題
+        <div class="radio-area">
+          <input type="radio" name="why" value="好きな作家だから" onclick="clickBtn1()">
+          <label>好きな作家だから</label>
+          <input type="radio" name="why" value="新しい作家にチャレンジ" onclick="clickBtn1()">
+          <label>新しい作家にチャレンジ</label>
+          <input type="radio" name="why" value="好きなジャンルだから" onclick="clickBtn1()">
+          <label>好きなジャンルだから</label><br>
+          <input type="radio" name="why" value="新しいジャンルにチャレンジ" onclick="clickBtn1()">
+          <label>新しいジャンルにチャレンジ</label>
+          <input type="radio" name="why" value="売れ筋の本だから" onclick="clickBtn1()">
+          <label>売れ筋の本だから</label>
+          <input type="radio" name="why" value="学校や会社からの課題" onclick="clickBtn1()">
+          <label>学校や会社からの課題</label>
+        </div>
         <h4>【ビジネス書・新書・専門書】</h4>
         <h5>・内容に関する知識</h5>
-          <input type="radio" name="why" value="初学者" onclick="clickBtn1()">初学者
-          <input type="radio" name="why" value="基礎的なことは分かる" onclick="clickBtn1()">基礎的なことは分かる
-          <input type="radio" name="why" value="専門的に学んだ" onclick="clickBtn1()">専門的に学んだ
-          <input type="radio" name="why" value="仕事で使っている" onclick="clickBtn1()">仕事で使っている
+        <div class="radio-area">
+          <input type="radio" name="why" value="初学者" onclick="clickBtn1()">
+          <label>初学者</label>
+          <input type="radio" name="why" value="基礎的なことは分かる" onclick="clickBtn1()">
+          <label>基礎的なことは分かる</label>
+          <input type="radio" name="why" value="専門的に学んだ" onclick="clickBtn1()">
+          <label>専門的に学んだ</label>
+          <input type="radio" name="why" value="仕事で使っている" onclick="clickBtn1()">
+          <label>仕事で使っている</label>
+        </div>
         <h5>・なぜ読もうと思ったか</h5>
-          <input type="radio" name="why" value="学校や会社からの課題" onclick="clickBtn1()">学校や会社からの課題
-          <input type="radio" name="why" value="仕事で使用" onclick="clickBtn1()">仕事で使用
-          <input type="radio" name="why" value="授業で使用" onclick="clickBtn1()">授業で使用
-          <input type="radio" name="why" value="興味のある内容だから" onclick="clickBtn1()">興味のある内容だから
+        <div class="radio-area">
+          <input type="radio" name="why" value="学校や会社からの課題" onclick="clickBtn1()">
+          <label>学校や会社からの課題</label>
+          <input type="radio" name="why" value="仕事で使用" onclick="clickBtn1()">
+          <label>仕事で使用</label>
+          <input type="radio" name="why" value="授業で使用" onclick="clickBtn1()">
+          <label>授業で使用</label>
+          <input type="radio" name="why" value="興味のある内容だから" onclick="clickBtn1()">
+          <label>興味のある内容だから</label>
+        </div>
       </form>
         <%= form_with model: @post, url: posts_path, method: :post, local: true, html: { name: "form2"}  do |f| %>
         <h4>【自由記入】</h4>
           <%= render "layouts/flash" %>
-          <%= f.text_field :reason, name: "reason",size: 60 %>
-          <%= f.hidden_field :book_id, :value => @book.id %>
-          <%= f.submit "読みたい本に登録", class: 'btn btn-link'%>
+          <%= f.text_field :reason, name: "reason", size: 100 %>
+          <%= f.hidden_field :book_id, :value => @book.id %><br>
+          <%= f.submit "読みたい本に登録", class: 'btn btn-link', style: 'margin-top:10px' %>
         <% end %>
+    </div>
   </div>
 </div>
 

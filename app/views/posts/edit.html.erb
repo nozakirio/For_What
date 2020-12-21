@@ -2,32 +2,33 @@
   <div class="col-md-3">
     <%= render 'users/profile', user: current_user %>
   </div>
-  
-  <div class="col-md-7">
+
+  <div class="col-md-9">
     <div class="book__info text-center">Book Information</div>
     <div class="book__content">
       <p class="book__image"><%= image_tag(@book.book_image_large_id) %></p>
       <div class="book__text">
-        <p class="book__title"><%= @book.title %></p>
+        <p class="book__title"><%= link_to @book.title,@book.item_url %></p>
         <p class="book__author"><%= @book.author %></p>
         <p class="book__date">発売日：<%= @book.publication_date %></p>
       </div>
     </div>
-    
+
     <h2>読んだ本に登録する</h2>
       <%= render "layouts/flash" %>
       <%= form_with model: @post, url: post_path,  method: :patch, local: true do |f| %>
         <div data-turbolinks="false">
           <div id="rating-form">
-            <%= f.label :star %>
+            <%= f.label :star %>  
           </div>
         </div>
-        <%= f.text_field :comment %>
-        <%= f.submit "内容を保存", class: 'btn btn-link'%>
+        <h4>コメント入力</h4>
+        <%= f.text_area :comment, size: "70x4" %><br>
+        <%= f.submit "内容を保存", class: 'btn btn-link', style: 'margin-top:10px' %>
       <% end %>
   </div>
 </div>
-  
+
 <script>
   $(function () {
     $('#rating-form').raty({
@@ -36,4 +37,3 @@
     });
   });
 </script>
-  

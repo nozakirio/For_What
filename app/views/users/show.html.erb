@@ -6,11 +6,15 @@
   <div class="col-md-9">
     <%= render "layouts/flash" %>
     <h2>本を探す</h2>
+    <div id="search-form">
       <%= form_with model: @book,url: search_books_path, method: :get, local: true do |f| %>
-        <%= f.select :model, options_for_select({ "タイトル" => "title", "著者" => "author" }) %>
-        <%= text_field :keyword, "", placeholder:'書籍タイトル、著者', size: 40, name: 'keyword' %>
-        <%= f.submit "検索" %>
+        <%= f.select :model, options_for_select({ "タイトル" => "title", "著者" => "author" }),{},{class: 'search-select'}  %>
+        <%= text_field :keyword, "", placeholder:'書籍タイトル、著者', size: 40, name: 'keyword', id: "search-box" %>
+        <%= f.button :type => "submit", id: "search-button" do  %>
+          <i class='fa fa-search'></i>
+        <% end %>
       <% end %>
+    </div>
 
     <h2>読みたい本</h2>
     <div class="table">
@@ -24,7 +28,7 @@
         <% @want_reads.each do |want_read| %>
         <div class="table__line">
           <div class="table__day"><%= want_read.created_at.strftime('%Y/%m/%d') %></div>
-          <div class="table__title"><%= want_read.book.title %></div>
+          <div class="table__title"><%= link_to want_read.book.title, want_read.book.item_url %></div>
           <div class="table__author"><%= want_read.book.author %></div>
           <div class="table__link"><%= link_to "投稿詳細", post_path(want_read.post), class: 'btn btn-link' %></div>
         </div>
@@ -45,7 +49,7 @@
         <% @have_reads.each_with_index do |have_read,index| %>
         <div class="table__line">
           <div class="table__day2"><%= have_read.updated_at.strftime('%Y/%m/%d') %></div>
-          <div class="table__title2"><%= have_read.book.title %></div>
+          <div class="table__title2"><%= link_to have_read.book.title, have_read.book.item_url %></div>
           <div class="table__author2"><%= have_read.book.author %></div>
           <div class="table__star2" id="star-<%= index %>" data-score="<%= have_read.post.star %>"></div>
           <div class="table__link2"><%= link_to "投稿詳細", post_path(have_read.post), class: 'btn btn-link' %></div>
@@ -54,7 +58,7 @@
       </div>
     </div>
   </div>
-  
+
 </div>
 
 <script>
