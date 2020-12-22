@@ -3,14 +3,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @want_reads = []
-    @have_reads = []
-    @user.admin_books.each do |admin_book|
-      # 読みたい本、読んだ本の情報をそれぞれ
+    want_reads_array = []
+    have_reads_array = []
+    @user.admin_books.order(updated_at: :desc).each do |admin_book|
+      # 読みたい本、読んだ本の情報をそれぞれ格納
       if admin_book.want_read == true && admin_book.have_read == false
-        @want_reads << admin_book
+        want_reads_array << admin_book
+        @want_reads = Kaminari.paginate_array(want_reads_array).page(params[:page]).per(5)
       elsif admin_book.want_read == true && admin_book.have_read == true
-        @have_reads << admin_book
+        have_reads_array << admin_book
+        @have_reads = Kaminari.paginate_array(have_reads_array).page(params[:page]).per(5)
       end
     end
   end

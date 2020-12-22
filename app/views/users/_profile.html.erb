@@ -1,5 +1,5 @@
 <div class="profile">
-  <div class="profile__title text-center">Profile</div>
+  <div class="profile__title text-center"><i class="far fa-address-book"></i> Profile</div>
   <div class="profile__image text-center"><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></div>
   <div class="profile__name text-center"><%= user.name %></div>
   <div  class="profile__content text-center">
@@ -10,8 +10,8 @@
       <%= link_to "登録情報編集", edit_user_path(user.id), class:"btn btn-default" %>
     <% end %>
   </div>
-  <div class="profile__book">
-    <h5>読書記録</h5>
+  <div class="profile__book text-center">
+    <h5><i  class="fas fa-star"></i> 読書記録</h5>
     <div>読んだ本：<%= AdminBook.where(user_id: user.id,have_read: true).count %>冊</div>
     <div>読みたい本：<%= AdminBook.where(user_id: user.id,want_read: true).count - AdminBook.where(user_id: user.id,have_read: true).count %>冊</div>
   </div>
