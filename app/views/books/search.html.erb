@@ -24,17 +24,16 @@
             <td><%= link_to result.title,result.item_url %></td>
             <td><%= result.author %></td>
             <td><%= result.publisher_name %></td>
-            <% book_for_count = Book.find_by(isbn: result.isbn) %>
-            <% @people = AdminBook.where(book_id: book_for_count, have_read: true).count %>
             <td>
-              <% if @people == 0 %>
+              <% if read_people(result.isbn) == 0 %>
                 0人
               <% else %>
-                <%= link_to @people, posts_path(isbn: result.isbn) %>人
+                <%= link_to read_people(result.isbn), posts_path(isbn: result.isbn) %>人
               <% end %>
             </td>
             <td>
-              <% if AdminBook.where(user_id: current_user.id,book_id: book_for_count).empty? %>
+              <!--該当bookの登録がなければ、bookのcreateへbook情報を送る-->
+              <% if AdminBook.where(user_id: current_user.id, book_id: book_search(result.isbn)).empty? %>
                 <%= form_with model: @book, url: books_path, local: true do |f| %>
                   <%= f.hidden_field :title, :value => result.title %>
                   <%= f.hidden_field :author, :value => result.author %>

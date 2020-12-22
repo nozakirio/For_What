@@ -13,10 +13,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.reason =params[:reason]
+    @post.reason = params[:reason]
     @post.user_id = current_user.id
+    # 投稿時、admin_bookも同時に生成
     if @post.save
-      admin_book = @post.admin_books.build(user_id: current_user.id, book_id: @post.book_id, want_read: true)
+      admin_book = @post.admin_books.build(
+        user_id: current_user.id, book_id: @post.book_id, want_read: true
+      )
       admin_book.save
       redirect_to post_path(@post)
     else
@@ -32,6 +35,7 @@ class PostsController < ApplicationController
     @book = @post.book
   end
 
+  # 読みたい本→読んだ本にadmin_bookを変更
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -55,13 +59,15 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
+    # 投稿削除時、userのadmin_bookも同時に削除
     if post.destroy
-    post.admin_books.destroy_all
-    redirect_to user_path(current_user)
+      post.admin_books.destroy_all
+      redirect_to user_path(current_user)
     end
   end
 
   private
+
   def post_params
     params.require(:post).permit(:book_id, :reason, :star, :comment)
   end
@@ -72,5 +78,4 @@ class PostsController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
 end

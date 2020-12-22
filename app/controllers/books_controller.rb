@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   def search
     @keyword = params[:keyword]
     @model = params[:model]
+    # 検索結果を@resultsに格納
     if @keyword.present? && @model == "title"
       @results = RakutenWebService::Books::Book.search(title: @keyword)
     elsif @keyword.present? && @model == "author"
@@ -24,12 +25,11 @@ class BooksController < ApplicationController
     end
   end
 
-  def show
-  end
+  private
 
-private
   def book_params
-    params.require(:book).permit(:title, :author, :isbn, :publication_date, :book_image_id, :book_image_large_id, :item_url)
+    params.require(:book).permit(
+      :title, :author, :isbn, :publication_date, :book_image_id, :book_image_large_id, :item_url
+    )
   end
-
 end

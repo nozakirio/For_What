@@ -3,16 +3,9 @@
     <div class="favorite-count col-md-3">
       <%= render 'users/profile', user: @post.user %>
     </div>
+    
     <div class="col-md-9 book">
-      <div class="book__info text-center">Book Information</div>
-      <div class="book__content">
-        <p class="book__image"><%= image_tag(@post.book.book_image_large_id) %></p>
-        <div class="book__text">
-          <p class="book__title"><%= link_to @post.book.title,@post.book.item_url %></p>
-          <p class="book__author"><%= @post.book.author %></p>
-          <p class="book__date">発売日：<%= @post.book.publication_date %></p>
-        </div>
-      </div>
+      <%= render 'books/show', book: @post.book %>
       <% if @post.star == nil %>
         <h2>読みたい本詳細</h2>
         <h3>【目的・背景】</h3>

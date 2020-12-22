@@ -49,6 +49,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "pry-byebug"
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -70,7 +71,6 @@ gem "kaminari"
 gem "jquery-rails"
 
 gem 'rakuten_web_service'
-gem 'rubocop-airbnb'
 gem 'dotenv-rails'
 gem 'rails-i18n', '~> 5.1'
 
