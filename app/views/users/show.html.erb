@@ -71,8 +71,8 @@
     for (var i=0; i<"<%= @have_reads.size %>"; i++) {
     $(`#star-${i}`).raty({
       size: 36,
-      starOff: "/assets/star-off.png",
-      starOn: "/assets/star-on.png",
+      starOff: "<%= image_url('star-off.png') %>",
+      starOn: "<%= image_url('star-on.png') %>",
       scoreName: "score"
     });
     };

@@ -23,7 +23,8 @@
 <script>
   $(function () {
     $('#rating-form').raty({
-    path: '/assets/',
+    starOff: "<%= image_url('star-off.png') %>",
+    starOn: "<%= image_url('star-on.png') %>",
     scoreName: 'post[star]'
     });
   });
