@@ -1,10 +1,11 @@
 <header class="navbar" >
   <div class="container">
-    <nav class='nav navbar-left' style="padding:10px 0">
-      <%= link_to "For What?", root_path, class: "logo" %>
+    <nav class='nav navbar-left'  style="padding:10px">
+      <img src="/images/book.png" width="35" height="35" id: "logo-img">
+      <%= link_to "For What?", root_path, id: "logo" %>
     </nav>
     <nav>
-      <ul class="nav navbar-left" style="padding:5px 30px">
+      <ul class="nav navbar-left" style="padding:12px 30px">
         <% if user_signed_in? %>
           <%= link_to 'マイページ', user_path(current_user), class: 'btn btn-nav' %>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-nav' %>

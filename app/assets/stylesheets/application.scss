@@ -12,6 +12,24 @@
   margin-bottom: 30px;
 }
 
+body{
+  font-family: 'Kosugi', sans-serif;
+}
+
+#logo-img{
+  vertical-align: middle;
+}
+
+#logo{
+  vertical-align: middle;
+  font-size: 2em;
+  color: #5573D2;
+  letter-spacing: 0px;
+  padding-top: 28px;
+  padding-left: 5px;
+  font-weight: 800;
+}
+
 h2 {
   position: relative;
   padding: 1rem 2rem;
@@ -54,6 +72,10 @@ footer{
   font-size     : 15px;
   font-weight   : normal;
   border-radius : 5px;
+}
+
+.pagination{
+  margin: 0 0;
 }
 
 // トップ
@@ -246,7 +268,7 @@ a:hover{
 }
 
 .profile__book{
-  padding:0 0 5px 30px;
+  padding: 5px 20px;
 }
 
 // 本一覧
