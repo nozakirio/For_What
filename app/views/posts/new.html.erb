@@ -4,15 +4,7 @@
   </div>
 
   <div class="col-md-9 book">
-    <div class="book__info text-center">Book Information</div>
-    <div class="book__content">
-      <p class="book__image"><%= image_tag(@book.book_image_large_id) %></p>
-      <div class="book__text">
-        <p class="book__title"><%= link_to @book.title,@book.item_url %></p>
-        <p class="book__author"><%= @book.author %></p>
-        <p class="book__date">発売日：<%= @book.publication_date %></p>
-      </div>
-    </div>
+    <%= render 'books/show', book: @book %>
     <div>
       <h2>読みたい本を登録</h2>
       <h4>読もうと思った目的や背景を教えてください。</h4>
@@ -58,7 +50,7 @@
         </div>
       </form>
         <%= form_with model: @post, url: posts_path, method: :post, local: true, html: { name: "form2"}  do |f| %>
-        <h4>【自由記入】</h4>
+          <h4>【自由記入】</h4>
           <%= render "layouts/flash" %>
           <%= f.text_field :reason, name: "reason", size: 100 %>
           <%= f.hidden_field :book_id, :value => @book.id %><br>
@@ -69,8 +61,8 @@
 </div>
 
 <script>
-  function clickBtn1(){
+function clickBtn1(){
   	var why = document.form1.why.value;
   	document.form2.reason.value = why;
- }
+}
 </script>

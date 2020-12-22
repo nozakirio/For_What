@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @want_reads = []
     @have_reads = []
     @user.admin_books.each do |admin_book|
+      # 読みたい本、読んだ本の情報をそれぞれ
       if admin_book.want_read == true && admin_book.have_read == false
         @want_reads << admin_book
       elsif admin_book.want_read == true && admin_book.have_read == true

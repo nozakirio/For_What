@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   def search
     @keyword = params[:keyword]
     @model = params[:model]
+    # 検索結果を@resultsに格納
     if @keyword.present? && @model == "title"
       @results = RakutenWebService::Books::Book.search(title: @keyword)
     elsif @keyword.present? && @model == "author"
@@ -22,9 +23,6 @@ class BooksController < ApplicationController
       @book.save
       redirect_to new_post_path(book: @book)
     end
-  end
-
-  def show
   end
 
   private
