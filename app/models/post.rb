@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :book
-  has_many :admin_books
+  has_many :admin_books, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   def favorited_by?(user)

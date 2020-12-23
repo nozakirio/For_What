@@ -7,7 +7,8 @@ class User < ApplicationRecord
   validates :name, :birthday, :gender, presence: true
   validates :email, presence: true, uniqueness: true
 
-  has_many :admin_books
+  has_many :admin_books, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_many :books, through: :admin_books
   has_many :favorites, dependent: :destroy
   attachment :profile_image
