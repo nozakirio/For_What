@@ -32,7 +32,9 @@
         <%= link_to "読みたい本から削除", post_path(@post), method: :delete, class: 'btn btn-del', style: 'margin-left:5px' %>
       <% elsif @post.user != current_user && AdminBook.where(user_id: current_user.id,book_id: @post.book.id,have_read: true).present? %>
         読んだ本に登録済み
-      <% else %>
+      <% elsif @post.user != current_user && AdminBook.where(user_id: current_user.id,book_id: @post.book.id,want_read: true).present? %>
+        読みたい本に登録済み
+      <% elsif @post.user != current_user && AdminBook.where(user_id: current_user.id,book_id: @post.book.id).empty? %>
         <%= link_to "読みたい本に登録", new_post_path(book: @post.book), class: 'btn btn-link' %>
       <% end %>
     </div>
