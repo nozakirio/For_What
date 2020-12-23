@@ -1,14 +1,15 @@
 <div class="row">
-  <div class="col-mx-6  col-md-offset-6 main-visual center-block ">
+  <div class="col-mx-7  col-md-offset-7 main-visual center-block ">
+    <%= image_tag "bookshelf.jpg", :width => '30%', :class => 'main-visual__image'  %>
     <div class="main-visual__content">
-      <h1 style="margin-left:20px">For What?</h1>
-      <h4 class="main-visual__text">
+      <h1><%= image_tag "book.png", :width => '35', :height => '35', :class => 'main-visual__icon' %>For What?</h1>
+      <p class="main-visual__text">
         本を読んでいて、こんな経験はありませんか？<br>
-        ・売れ筋の本だから買ったけど、面白くない！<br>
-        ・この本、難しすぎる…<br>
-        このサイトでは、そんな悩みを解決します。<br>
-        <%= link_to "詳しく見る", about_path, class: 'btn btn-link' %>
-      </h4>
+        売れ筋の本だから買ったけど、面白くない。<br>
+        この本、難しすぎる…<br>
+        このサイトは、皆様の本選びをお手伝いします！<br>
+      </p>
+      <%= link_to "詳しく見る", about_path, class: 'btn btn-nav' %>
     </div>
   </div>
 </div>

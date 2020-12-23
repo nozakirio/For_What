@@ -35,9 +35,11 @@
         <% end %>
       </div>
     </div>
-    <div class="text-center">
-      <%= paginate @want_reads %>
-    </div>
+    <% unless  @want_reads.length == 0 %>
+      <div class="text-center">
+        <%= paginate @want_reads %>
+      </div>
+    <% end %>
 
     <h2>読んだ本</h2>
     <div class="table">
@@ -59,9 +61,11 @@
         </div>
         <% end %>
       </div>
-      <div class="text-center">
-        <%= paginate @have_reads %>
-      </div>  
+      <% unless  @have_reads.length == 0 %>
+        <div class="text-center">
+          <%= paginate @have_reads %>
+        </div>  
+      <% end %>
     </div>
   </div>
 </div>

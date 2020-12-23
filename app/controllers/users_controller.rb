@@ -5,6 +5,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     want_reads_array = []
     have_reads_array = []
+    @want_reads = []
+    @have_reads = []
     @user.admin_books.order(updated_at: :desc).each do |admin_book|
       # 読みたい本、読んだ本の情報をそれぞれ格納
       if admin_book.want_read == true && admin_book.have_read == false
@@ -36,8 +38,7 @@ class UsersController < ApplicationController
 
   def withdraw
     @user = current_user
-    @user.update(is_deleted: true)
-    reset_session
+    @user.destroy
     redirect_to root_path
   end
 
