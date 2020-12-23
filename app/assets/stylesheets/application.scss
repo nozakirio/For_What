@@ -80,33 +80,34 @@ footer{
 
 // トップ
 .main-visual {
-  width: 100%;
-  height: 424px;
-  background-image: url("/images/books.jpg");
-  background-size: cover;
-  background-position: center;
-  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center
 }
 
 .main-visual__content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 20%;
-  left: 40%;
-  margin: auto;
-  width: 420px;
-  height: 50%;
+  width: 40%;
+  height: 75%;
+  padding-bottom: 10px;
+  margin-left: 10px;
+  margin-top: 1px;
   background-color: rgba(85, 115, 210, 0.1);
-  text-align:left;
+  text-align: center;
+}
+
+.main-visual__icon{
+  margin-right: 10px;
 }
 
 .main-visual__text {
   color: #241a08;
+  font-size: 15px;
   margin: 10px 20px;
-  line-height: 25px;
+  line-height: 30px;
+  text-align: left;
 }
 
+// アバウト
 .about__text {
   color: #241a08;
   margin: 10px 20px;
