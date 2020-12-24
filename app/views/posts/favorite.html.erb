@@ -2,7 +2,7 @@
   <div class="col-md-3" data-turbolinks="false">
     <%= render 'users/profile', user: @user %>
   </div>
-  
+
   <div class="col-md-9">
     <h2>お気に入り投稿一覧</h2>
     <div class="table">
@@ -16,8 +16,8 @@
       <div data-turbolinks="false">
         <% @favorites.each_with_index do |favorite,index| %>
           <div class="table__line">
-            <div class="table__day2"><%= favorite.post.user.name %></div>
-            <div class="table__title2"><%= favorite.post.book.title %></div>
+            <div class="table__day2"><%= link_to favorite.post.user.name, user_path(favorite.post.user) %></div>
+            <div class="table__title2"><%= link_to favorite.post.book.title, favorite.post.book.item_url %></div>
             <div class="table__author2"><%= favorite.post.book.author %></div>
             <div class="table__star2" id="star-<%= index %>" data-score="<%= favorite.post.star %>"></div>
             <div class="table__link2"><%= link_to "投稿詳細", post_path(favorite.post), class: 'btn btn-link' %></div>
@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  
+
 </div>
 
 <script>
