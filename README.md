@@ -11,19 +11,19 @@
 他の人がどんな目的で読み、どういった評価をしているかがセットで分かれば、読書がより充実すると考えました。 
 
 ### ターゲットユーザ
-*本選びで失敗したくない方  
-*気になる本を買う前に、同じ目的で買った人がどんな評価をしているか知りたい方  
-*これまで読んだことのないジャンルや作家さんから、好みの本を探したい方
+・本選びで失敗したくない方  
+・気になる本を買う前に、同じ目的で買った人がどんな評価をしているか知りたい方  
+・これまで読んだことのないジャンルや作家さんから、好みの本を探したい方
 
 ### 主な利用シーン
-*読みたい本を探す時  
-*本を買う時
+・読みたい本を探す時  
+・本を買う時
 
 ## 設計書
-*テーブル定義書  
-<https://drive.google.com/file/d/1rVBqwYn5z7ek_VRn_uuAhVVYTF5wzB_L/view?usp=sharing>
+・テーブル定義書  
+<https://drive.google.com/file/d/1SN05mVjJZG3_ACIzadRVKkyNX2Sx0pN0/view?usp=sharing>
 
-*ER図 
+・ER図  
 <https://drive.google.com/file/d/1rVBqwYn5z7ek_VRn_uuAhVVYTF5wzB_L/view?usp=sharing>
 
 ### 機能一覧
