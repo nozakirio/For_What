@@ -4,9 +4,20 @@ module ApplicationHelper
     Book.find_by(isbn: book_isbn)
   end
 
-  # 読んだ人数をisbnでカウント　
+  # 読んだ人数をisbnでカウント
   def read_people(book_isbn)
     AdminBook.where(book_id: book_search(book_isbn), have_read: true).count
   end
+
+  # ページタイトルの設定（指定なしならForWhat?）
+  def full_title(page_title = '')
+    base_title = "For What?"
+    if page_title.empty?
+      base_title
+    else
+      page_title + " | " + base_title
+    end
+  end
+
 end
 
