@@ -1,9 +1,9 @@
-<div class="book__info text-center"><i class="fas fa-book-open"></i>  Book Information</div>
-<div class="book__content">
-  <p class="book__image"><%= image_tag(book.book_image_large_id) %></p>
-  <div class="book__text">
-    <p class="book__title"><%= link_to book.title,book.item_url %></p>
-    <p class="book__author"><%= book.author %></p>
-    <p class="book__date">発売日：<%= book.publication_date %></p>
+<div class="book-info text-center"><i class="fas fa-book-open"></i>  Book Information</div>
+<div class="book-info__content">
+  <p class="book-info__image"><%= image_tag(book.book_image_large_id) %></p>
+  <div class="book-info__text">
+    <p class="book-info__title"><%= link_to book.title,book.item_url %></p>
+    <p class="book-info__author"><%= book.author %></p>
+    <p class="book-info__date">発売日：<%= book.publication_date %></p>
   </div>
 </div>
