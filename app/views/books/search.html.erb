@@ -33,7 +33,7 @@
               <% end %>
             </td>
             <td>
-              <!--該当bookの登録がなければ、bookのcreateへbook情報を送る-->
+              <!--current_userのAdminBookに、該当bookの登録がなければ、bookのcreateへbook情報を送る-->
               <% if AdminBook.where(user_id: current_user.id, book_id: book_search(result.isbn)).empty? %>
                 <%= form_with model: @book, url: books_path, local: true do |f| %>
                   <%= f.hidden_field :title, :value => result.title %>

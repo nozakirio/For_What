@@ -7,8 +7,8 @@ class UsersController < ApplicationController
     have_reads_array = []
     @want_reads = []
     @have_reads = []
+    # want_readsに読みたい本、have_readsに読んだ本の情報をそれぞれ格納
     @user.admin_books.order(updated_at: :desc).each do |admin_book|
-      # 読みたい本、読んだ本の情報をそれぞれ格納
       if admin_book.want_read == true && admin_book.have_read == false
         want_reads_array << admin_book
         @want_reads = Kaminari.paginate_array(want_reads_array).page(params[:page]).per(5)

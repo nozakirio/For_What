@@ -10,7 +10,7 @@
       <%= link_to "登録情報編集", edit_user_path(user.id), class:"btn btn-default" %>
     <% end %>
   </div>
-  <div class="profile__book text-center">
+  <div class="profile__book-info text-center">
     <h5><i  class="fas fa-star"></i> 読書記録</h5>
     <div>読んだ本：<%= AdminBook.where(user_id: user.id,have_read: true).count %>冊</div>
     <div>読みたい本：<%= AdminBook.where(user_id: user.id,want_read: true).count - AdminBook.where(user_id: user.id,have_read: true).count %>冊</div>
