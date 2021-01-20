@@ -248,7 +248,7 @@ a{
     border:none;
     font-size:15px;
   }
-  
+
   &__button:hover{
     color: $green;
   }
@@ -396,20 +396,18 @@ a{
 
 // 本情報
 .book-info{
+  font-size: 18px;
+  background: $green;
+  padding: 4px 0;
+  color: #FFF;
+  font-weight: bold;
+
   &__content{
     padding: 15px 0;
     background: #fff;
     border: solid 1px $green;
     display: flex;
     justify-content: center;
-  }
-
-  &__info{
-    font-size: 18px;
-    background: #55CFAA;
-    padding: 4px 0;
-    color: #FFF;
-    font-weight: bold;
   }
 
   &__image{

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:edit]
+  before_action :ensure_correct_user, only: [:edit, :unsubscribe]
 
   def show
     @user = User.find(params[:id])
@@ -20,7 +20,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
@@ -33,7 +32,6 @@ class UsersController < ApplicationController
   end
 
   def unsubscribe
-    @user = User.find(params[:id])
   end
 
   def withdraw
