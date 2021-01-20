@@ -31,7 +31,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
     @book = @post.book
   end
 
