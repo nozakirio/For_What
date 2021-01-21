@@ -7,16 +7,13 @@ RSpec.describe Book, type: :model do
       expect(book).to be_valid
     end
     it "titleがない場合は無効" do
-      book = Book.new(title: nil)
-      expect(book).not_to be_valid
+      expect(FactoryBot.build(:book, title: "")).not_to be_valid
     end
     it "authorがない場合は無効" do
-      book = Book.new(author: nil)
-      expect(book).not_to be_valid
+      expect(FactoryBot.build(:book, author: "")).not_to be_valid
     end
     it "isbnがない場合は無効" do
-      book = Book.new(isbn: nil)
-      expect(book).not_to be_valid
+      expect(FactoryBot.build(:book, isbn: "")).not_to be_valid
     end
   end
 end
