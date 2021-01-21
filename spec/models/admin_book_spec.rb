@@ -9,30 +9,8 @@ RSpec.describe AdminBook, type: :model do
     end
 
     it "全て入力してあるので保存される" do
-      admin_book = FactoryBot.create(
-        :admin_book, user_id: @user.id, book_id: @book.id, post_id: @post.id
-      )
+      admin_book = FactoryBot.create(:admin_book)
       expect(admin_book).to be_valid
-    end
-    it "have_readがない場合は無効" do
-      admin_book = AdminBook.new(have_read: nil)
-      expect(admin_book).not_to be_valid
-    end
-    it "want_readがない場合は無効" do
-      admin_book = AdminBook.new(want_read: nil)
-      expect(admin_book).not_to be_valid
-    end
-    it "user_idがない場合は無効" do
-      admin_book = AdminBook.new(user_id: nil)
-      expect(admin_book).not_to be_valid
-    end
-    it "book_idがない場合は無効" do
-      admin_book = AdminBook.new(book_id: nil)
-      expect(admin_book).not_to be_valid
-    end
-    it "post_idがない場合は無効" do
-      admin_book = AdminBook.new(post_id: nil)
-      expect(admin_book).not_to be_valid
     end
   end
 end
