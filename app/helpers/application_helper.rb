@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   # ページタイトルの設定（指定なしならForWhat?）
-  def full_title(page_title = '')
+  def full_title(page_title)
     base_title = "For What?"
     if page_title.empty?
       base_title
@@ -18,6 +18,4 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
-
 end
-

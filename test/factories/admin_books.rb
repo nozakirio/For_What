@@ -4,6 +4,6 @@ FactoryBot.define do
     book_id { "1" }
     want_read { "false" }
     have_read { "false" }
-    post_id { "1"}
+    post_id { "1" }
   end
 end
