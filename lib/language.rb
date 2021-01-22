@@ -10,8 +10,8 @@ module Language
       params = {
         document: {
           type: 'PLAIN_TEXT',
-          content: text
-        }
+          content: text,
+        },
       }.to_json
       # Google Cloud Natural Language APIにリクエスト
       uri = URI.parse(api_url)

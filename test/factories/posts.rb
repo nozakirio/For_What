@@ -3,7 +3,7 @@ FactoryBot.define do
     user_id { "1" }
     book_id { "1" }
     reason { "aaa" }
-    #star { "3" }
-    #comment { "eee" }
+    # star { "3" }
+    # comment { "eee" }
   end
 end
