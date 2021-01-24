@@ -58,19 +58,6 @@ footer{
   border-top: solid 2px $blue;
 }
 
-.msg{
-  font-weight: bold;
-  color: green;
-}
-
-#notice{
-  color: green;
-}
-
-#alert{
-  color: red;
-}
-
 .radio-area input[type="radio"] + label {
   margin       : 0 8px;
   font-size     : 15px;
@@ -80,6 +67,26 @@ footer{
 
 .pagination{
   margin: 0 0;
+}
+
+// メッセージ
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.msg{
+  font-weight: bold;
+  color: green;
+}
+
+.alert-notice {
+  font-weight: bold;
+  color: green;
 }
 
 // 投稿詳細コメント
