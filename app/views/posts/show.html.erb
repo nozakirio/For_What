@@ -4,7 +4,7 @@
     <div class="favorite-count col-md-3">
       <%= render 'users/profile', user: @post.user %>
     </div>
-
+    <%= render "layouts/flash" %>
     <div class="col-md-9 book">
       <%= render 'books/show', book: @post.book %>
       <% if @post.star == nil %>

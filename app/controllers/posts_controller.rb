@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     else
       @book = @post.book
       @post = Post.new
-      flash.now[:alert] = '入力は必須です'
+      flash.now[:danger] = '入力は必須です'
       render 'new'
     end
   end
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       @book = @post.book
-      flash.now[:alert] = '評価とコメントを入力してください'
+      flash.now[:danger] = '評価とコメントを入力してください'
       render 'edit'
     end
   end
@@ -62,6 +62,7 @@ class PostsController < ApplicationController
     # 投稿削除時、userのadmin_bookも同時に削除
     if post.destroy
       post.admin_books.destroy_all
+      flash[:success] = '投稿を削除しました'
       redirect_to user_path(current_user)
     end
   end
