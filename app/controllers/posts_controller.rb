@@ -37,7 +37,8 @@ class PostsController < ApplicationController
   # 読みたい本→読んだ本にadmin_bookを変更
   def update
     @post = Post.find(params[:id])
-    @post.score = Language.get_data(post_params[:comment])
+    # Cloud Natural Language APIを有効にする
+    # @post.score = Language.get_data(post_params[:comment])
     if @post.update(post_params)
       @post.admin_books.update(have_read: true)
       redirect_to post_path(@post)
